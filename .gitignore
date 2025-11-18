@@ -1,0 +1,6 @@
+# Ignore Python bytecode cacheonly for backend
+/backend/**/__pycache__/
+**/__pycache__/
+**/*.py[cod]
+
+.venv/

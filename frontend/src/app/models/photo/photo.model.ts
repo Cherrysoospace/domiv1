@@ -1,8 +1,16 @@
 export interface Photo {
-    id: number;
+    // id optional when creating
+    id?: number;
     issue_id: number;
-    image_url: String;
-    caption?: String;
-    taken_at?: Date;
-    created_at: Date;
+    // use lowercase string types
+    image_url: string;
+    // caption optional and may be null
+    caption?: string | null;
+    // taken_at may be ISO string or Date
+    taken_at?: string | Date;
+    // created_at may be ISO string or Date
+    created_at?: string | Date;
+
+    // allow extra backend fields
+    [key: string]: any;
 }

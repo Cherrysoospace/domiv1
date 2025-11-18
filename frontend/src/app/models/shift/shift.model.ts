@@ -1,9 +1,19 @@
 export interface Shift {
-    id: number;
+    // id optional when creating
+    id?: number;
     driver_id: number;
     motorcycle_id: number;
-    start_time: Date;
-    end_time?: Date;
-    status: 'active' | 'completed' | 'cancelled';
-    created_at: Date;
+    // backend sends ISO strings; accept string or Date
+    start_time?: string | Date;
+    end_time?: string | Date | null;
+    // flexible status to avoid mismatches; normalize in service if needed
+    status?: string;
+    created_at?: string | Date;
+
+    // include related objects if returned by backend
+    driver?: any;
+    motorcycle?: any;
+
+    // allow extra backend fields
+    [key: string]: any;
 }

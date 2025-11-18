@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "styleext": "scss"
         }
       },
       "architect": {
@@ -162,7 +162,7 @@
   "defaultProject": "argon-dashboard-angular",
   "schematics": {
     "@schematics/angular:component": {
-      "style": "scss"
+      "styleext": "scss"
     }
   },
   "cli": {

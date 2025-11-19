@@ -1,0 +1,16 @@
+/* Global toast styles */
+.global-toast {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 2000;
+}
+.global-toast-message {
+	background: #4f9df7;
+	color: #fff;
+	padding: 10px 16px;
+	border-radius: 8px;
+	box-shadow: 0 8px 20px rgba(34,60,80,0.12);
+	font-weight: 600;
+}
+

@@ -2,6 +2,9 @@
 
 .main-content {
     position: relative;
+    // Ensure main content doesn't overlap the top navbar which is positioned absolute
+    // Matches Argon default spacing so pages render below the navbar
+    padding-top: $main-content-padding-y;
 
     // Navbar
     .navbar-top {

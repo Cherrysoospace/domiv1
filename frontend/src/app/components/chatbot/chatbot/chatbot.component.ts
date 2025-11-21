@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChatbotService } from '../chatbot.service';
+import { ChatbotService } from '../../../services/chatbot/chatbot.service';
 
 interface Message {
   from: 'user' | 'bot';

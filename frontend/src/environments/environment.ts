@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5000',
-  geminiApiKey: '',
+  geminiApiKey: 'AIzaSyDNM7RpT_ZbY_SmRviCa7QR7Aub_vSqubI',
   geminiUrl: 'https://generative.googleapis.com/v1beta2/models/gemini-1.0:generateText'
 };
 

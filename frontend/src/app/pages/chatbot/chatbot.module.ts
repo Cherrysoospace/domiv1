@@ -1,7 +1,7 @@
-/*import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatbotComponent } from '../../components/chatbot/chatbot/chatbot.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -9,4 +9,4 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, FormsModule, HttpClientModule],
   exports: [ChatbotComponent]
 })
-export class ChatbotModule { }*/
+export class ChatbotModule { }

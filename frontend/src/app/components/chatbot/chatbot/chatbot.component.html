@@ -1,0 +1,34 @@
+<div class="chatbot-widget" [class.open]="open">
+	<div class="chatbot-toggle" (click)="toggle()" title="Abrir chat">
+		<div class="avatar">🤖</div>
+		<div class="badge" *ngIf="!open">Chat</div>
+	</div>
+
+	<div class="chatbot-panel" *ngIf="open">
+		<div class="header">
+			<div class="title">Asistente</div>
+			<div class="actions">
+				<label class="tts-toggle">
+					<input type="checkbox" [(ngModel)]="useTTS"> Voz
+				</label>
+				<button class="close" (click)="toggle()">✕</button>
+			</div>
+		</div>
+
+		<div #messagesContainer class="messages">
+			<div *ngFor="let m of messages" class="message" [class.user]="m.from === 'user'" [class.bot]="m.from === 'bot'">
+				<div class="bubble">{{m.text}}</div>
+			</div>
+			<div class="loading" *ngIf="loading">Escribiendo...</div>
+		</div>
+
+		<div class="faqs">
+			<div class="faq-chip" *ngFor="let f of faqs" (click)="chooseFaq(f)">{{f.q}}</div>
+		</div>
+
+		<form (submit)="send(); $event.preventDefault()" class="composer">
+			<input type="text" placeholder="Escribe un mensaje..." [(ngModel)]="input" name="chatInput">
+			<button type="submit" [disabled]="loading || !input.trim()">Enviar</button>
+		</form>
+	</div>
+</div>

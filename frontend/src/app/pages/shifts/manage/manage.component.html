@@ -1,0 +1,65 @@
+<div class="manage-card-wrapper">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="card cozy-card">
+					<div class="card-header cozy-header text-center">
+						<h2 *ngIf="!id" class="cozy-title">Crear Turno</h2>
+						<h2 *ngIf="id" class="cozy-title">Editar Turno</h2>
+					</div>
+
+					<div class="card-body">
+						<form [formGroup]="form" (ngSubmit)="save()">
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Conductor</label>
+								<select formControlName="driver_id" class="form-control cozy-input">
+									<option value="">Seleccione un conductor</option>
+									<option *ngFor="let d of drivers" [value]="d.id">{{ d.name }}</option>
+								</select>
+								<p *ngIf="form.controls['driver_id'].invalid && form.controls['driver_id'].touched" class="text-danger small mt-1">
+									Debe seleccionar un conductor.
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Motocicleta</label>
+								<select formControlName="motorcycle_id" class="form-control cozy-input">
+									<option value="">Seleccione una motocicleta</option>
+									<option *ngFor="let m of motorcycles" [value]="m.id">{{ m.license_plate }}</option>
+								</select>
+								<p *ngIf="form.controls['motorcycle_id'].invalid && form.controls['motorcycle_id'].touched" class="text-danger small mt-1">
+									Debe seleccionar una motocicleta.
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Inicio</label>
+								<input type="datetime-local" formControlName="start_time" class="form-control cozy-input" />
+								<p *ngIf="form.controls['start_time'].invalid && form.controls['start_time'].touched" class="text-danger small mt-1">
+									El inicio es obligatorio.
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Fin</label>
+								<input type="datetime-local" formControlName="end_time" class="form-control cozy-input" />
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Estado</label>
+								<select formControlName="status" class="form-control cozy-input">
+									<option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
+								</select>
+							</div>
+
+							<div class="d-flex justify-content-end">
+								<button type="button" class="btn btn-outline-secondary mr-2" (click)="cancel()">Regresar</button>
+								<button type="submit" class="btn save-btn" [disabled]="form.invalid">Guardar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

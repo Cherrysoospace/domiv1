@@ -1,0 +1,28 @@
+:host {
+  --blue-500: #4a90e2;
+  --blue-600: #3578d6;
+}
+
+.card-header {
+  background: linear-gradient(90deg, var(--blue-500), var(--blue-600));
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: var(--blue-500) !important;
+  border-color: var(--blue-500) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-600) !important;
+  border-color: var(--blue-600) !important;
+}
+
+.table thead {
+  background-color: rgba(74,144,226,0.06);
+}
+
+.text-muted {
+  color: rgba(0,0,0,0.45) !important;
+}

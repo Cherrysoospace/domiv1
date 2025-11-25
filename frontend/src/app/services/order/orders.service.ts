@@ -26,6 +26,7 @@ export class OrdersService {
       address: raw.address ?? undefined,
       customer: raw.customer ?? undefined,
       menu: raw.menu ?? undefined,
+      motorcycle: raw.motorcycle ?? undefined,
       ...raw
     } as Order;
   }

@@ -1,0 +1,49 @@
+<div class="content">
+	<div class="container-fluid mt-4">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header d-flex justify-content-between align-items-center">
+						<h3 class="mb-0">Lista de Órdenes</h3>
+						<a class="btn btn-sm btn-danger" routerLink="/orders/create">Nueva Orden</a>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-bordered">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">Cliente</th>
+										<th scope="col">Producto</th>
+										<th scope="col">Dirección</th>
+										<th scope="col">Motocicleta</th>
+										<th scope="col">Estado</th>
+										<th scope="col">Precio Total</th>
+										<th scope="col" class="text-right">Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let order of orders">
+										<td>{{ order.customer?.name || 'N/A' }}</td>
+										<td>{{ order.menu?.product?.name || 'N/A' }}</td>
+										<td>{{ order.address?.street || 'N/A' }}</td>
+										<td>{{ getMotorcyclePlate(order.motorcycle_id) }}</td>
+										<td>{{ order.status || 'N/A' }}</td>
+										<td>{{ order.total_price | currency }}</td>
+										<td class="text-right">
+											<a class="btn btn-sm btn-outline-danger mr-2" [routerLink]="['/orders/edit', order.id]">Editar</a>
+											<button class="btn btn-sm btn-danger" (click)="delete(order.id)">Eliminar</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div *ngIf="orders.length === 0" class="text-center text-muted py-3">
+								No hay órdenes aún.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

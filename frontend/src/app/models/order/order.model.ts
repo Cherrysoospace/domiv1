@@ -15,6 +15,7 @@ export interface Order {
     address?: any;
     customer?: any;
     menu?: any;
+    motorcycle?: any;
 
     // allow extra backend fields
     [key: string]: any;

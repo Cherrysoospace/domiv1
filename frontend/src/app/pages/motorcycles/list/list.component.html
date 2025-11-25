@@ -1,0 +1,45 @@
+<div class="content">
+	<div class="container-fluid mt-4">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header d-flex justify-content-between align-items-center">
+						<h3 class="mb-0">Lista de Motocicletas</h3>
+						<a class="btn btn-sm btn-danger" routerLink="/motorcycles/create">Nueva Motocicleta</a>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-bordered">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">Placa</th>
+										<th scope="col">Marca</th>
+										<th scope="col">Año</th>
+										<th scope="col">Estado</th>
+										<th scope="col" class="text-right">Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let m of motorcycles">
+										<td>{{ m.license_plate }}</td>
+										<td>{{ m.brand }}</td>
+										<td>{{ m.year }}</td>
+										<td>{{ m.status }}</td>
+										<td class="text-right">
+											<a class="btn btn-sm btn-outline-danger mr-2" [routerLink]="['/motorcycles/edit', m.id]">Editar</a>
+											<button class="btn btn-sm btn-danger" (click)="delete(m.id)">Eliminar</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div *ngIf="motorcycles.length === 0" class="text-center text-muted py-3">
+								No hay motocicletas aún.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

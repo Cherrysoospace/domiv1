@@ -1,0 +1,47 @@
+<div class="manage-card-wrapper">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="card cozy-card">
+					<div class="card-header cozy-header text-center">
+						<h2 *ngIf="!id" class="cozy-title">Crear Motocicleta</h2>
+						<h2 *ngIf="id" class="cozy-title">Editar Motocicleta</h2>
+					</div>
+
+					<div class="card-body">
+						<form [formGroup]="form" (ngSubmit)="save()">
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="license_plate" class="form-control cozy-input" placeholder="Placa" />
+								<p *ngIf="form.controls['license_plate'].invalid && form.controls['license_plate'].touched" class="text-danger small mt-1">La placa es obligatoria</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="brand" class="form-control cozy-input" placeholder="Marca" />
+								<p *ngIf="form.controls['brand'].invalid && form.controls['brand'].touched" class="text-danger small mt-1">La marca es obligatoria</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="year" class="form-control cozy-input" placeholder="Año" />
+								<p *ngIf="form.controls['year'].invalid && form.controls['year'].touched" class="text-danger small mt-1">El año es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<select formControlName="status" class="form-control cozy-input">
+									<option value="">Seleccione estado</option>
+									<option value="available">Disponible</option>
+									<option value="in_use">En uso</option>
+									<option value="maintenance">Mantenimiento</option>
+								</select>
+							</div>
+
+							<div class="d-flex justify-content-end">
+								<button type="button" class="btn btn-outline-secondary mr-2" (click)="cancel()">Regresar</button>
+								<button type="submit" class="btn save-btn" [disabled]="form.invalid">Guardar</button>
+							</div>
+						</form>
+					</div>
+				</div> <!-- .cozy-card -->
+			</div>
+		</div>
+	</div>
+</div>

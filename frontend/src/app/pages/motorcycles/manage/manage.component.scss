@@ -1,0 +1,125 @@
+/* src/app/pages/motorcycles/manage/manage.component.scss */
+/* Cozy red styling for the Manage Motorcycle form component */
+
+:host {
+	display: block;
+	.manage-card-wrapper {
+		padding: 28px 0;
+	}
+
+	/* Red tokens */
+	$red-bg: #fff5f5;
+	$red-header-bg: #fff1f1;
+	$red-accent: #e53e3e; /* red */
+	$red-btn: #e53e3e;
+	$red-btn-hover: darken($red-btn, 6%);
+	$red-focus: rgba(229,62,62,0.12);
+	$red-shadow: 0 6px 18px rgba(80,20,20,0.04);
+
+	.cozy-card {
+		background: $red-bg;
+		border: none;
+		border-radius: 14px;
+		box-shadow: $red-shadow;
+		overflow: hidden;
+		transition: transform .12s ease, box-shadow .12s ease;
+	}
+
+	.cozy-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(80,20,20,0.06);
+	}
+
+	.cozy-header {
+		background: $red-header-bg;
+		padding: 18px 20px;
+		border-bottom: 1px solid rgba(229,62,62,0.06);
+	}
+
+	.cozy-title {
+		margin: 0;
+		font-weight: 500;
+		color: $red-accent;
+		font-size: 1.375rem;
+		letter-spacing: 0.2px;
+	}
+
+	.card-body {
+		padding: 22px;
+	}
+
+	.cozy-group {
+		margin-bottom: 16px;
+	}
+
+	.cozy-input {
+		background: #fff;
+		border: 1px solid rgba(80,20,20,0.06);
+		border-radius: 8px;
+		padding: 10px 12px;
+		height: calc(1.5em + .9rem + 2px);
+		box-shadow: 0 2px 6px rgba(80,20,20,0.03);
+		transition: border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+	}
+
+	input.ng-invalid.ng-touched.cozy-input,
+	textarea.ng-invalid.ng-touched.cozy-input {
+		border-color: rgba(220,53,69,0.9);
+		box-shadow: 0 6px 18px rgba(220,53,69,0.06);
+	}
+
+	input.ng-valid.ng-touched.cozy-input,
+	textarea.ng-valid.ng-touched.cozy-input {
+		border-color: $red-accent;
+		box-shadow: 0 6px 18px $red-focus;
+	}
+
+	.cozy-input:focus {
+		outline: none;
+		border-color: $red-accent;
+		box-shadow: 0 6px 18px $red-focus;
+	}
+
+	.save-btn {
+		background: $red-btn;
+		color: #fff;
+		border: none;
+		border-radius: 30px;
+		padding: 8px 18px;
+		font-weight: 600;
+		box-shadow: 0 6px 14px rgba(229,62,62,0.14);
+		transition: background .12s ease, box-shadow .12s ease, transform .08s ease;
+	}
+
+	.save-btn[disabled] {
+		opacity: 0.6;
+		pointer-events: none;
+		box-shadow: none;
+	}
+
+	.save-btn:hover,
+	.save-btn:focus {
+		background: $red-btn-hover;
+		box-shadow: 0 10px 20px rgba(229,62,62,0.18);
+		transform: translateY(-1px);
+		color: #fff;
+	}
+
+	@media (max-width: 575.98px) {
+		.card-body {
+			padding: 16px;
+		}
+
+		.cozy-title {
+			font-size: 1.15rem;
+		}
+
+		.save-btn {
+			width: 100%;
+		}
+
+		.d-flex.justify-content-end {
+			justify-content: center !important;
+		}
+	}
+}

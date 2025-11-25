@@ -1,0 +1,34 @@
+<div class="menu-list">
+	<div class="menu-header">
+		<h2>Menús</h2>
+		<div class="actions">
+			<a class="btn btn-primary" routerLink="/menus/create">Nuevo Menú</a>
+		</div>
+	</div>
+
+	<div class="cards">
+		<div class="card" *ngFor="let m of menus">
+			<div class="card-body">
+				<div class="row">
+					<div class="col title">
+						<div class="restaurant">{{ m.restaurant?.name || '--' }}</div>
+						<div class="product">{{ m.product?.name || '--' }}</div>
+					</div>
+
+					<div class="col meta">
+						<div class="price">$ {{ m.price | number:'1.2-2' }}</div>
+						<div class="availability" [ngClass]="{'available': m.availability, 'unavailable': !m.availability}">
+							{{ m.availability ? 'Disponible' : 'No disponible' }}
+						</div>
+					</div>
+
+					<div class="col actions-col">
+						<a class="link" routerLink="/menus/edit/{{m.id}}">Editar</a>
+						<button class="btn btn-ghost" (click)="delete(m.id)">Eliminar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="menu-form">
+	<div class="card">
+		<div class="card-header">
+			<h2 *ngIf="!id">Crear Menú</h2>
+			<h2 *ngIf="id">Editar Menú</h2>
+		</div>
+
+		<form [formGroup]="form" (ngSubmit)="save()" class="card-body">
+
+			<div class="field">
+				<label for="restaurant_id">Restaurante</label>
+				<select id="restaurant_id" formControlName="restaurant_id">
+					<option value="">Seleccione un restaurante</option>
+					<option *ngFor="let r of restaurants" [value]="r.id">{{ r.name }}</option>
+				</select>
+				<div class="error" *ngIf="form.get('restaurant_id')?.invalid && form.get('restaurant_id')?.touched">Requerido</div>
+			</div>
+
+			<div class="field">
+				<label for="product_id">Producto</label>
+				<select id="product_id" formControlName="product_id">
+					<option value="">Seleccione un producto</option>
+					<option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+				</select>
+				<div class="error" *ngIf="form.get('product_id')?.invalid && form.get('product_id')?.touched">Requerido</div>
+			</div>
+
+			<div class="field">
+				<label for="price">Precio</label>
+				<input id="price" type="number" placeholder="Precio" formControlName="price" />
+				<div class="error" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">Requerido</div>
+			</div>
+
+			<div class="field">
+				<label for="availability">Disponible</label>
+				<select id="availability" formControlName="availability">
+					<option *ngFor="let a of availabilityOptions" [ngValue]="a.value">{{ a.label }}</option>
+				</select>
+			</div>
+
+			<div class="actions">
+				<button type="submit" class="btn btn-primary">Guardar</button>
+				<button type="button" class="btn btn-secondary" (click)="cancel()">Regresar</button>
+			</div>
+
+		</form>
+	</div>
+</div>

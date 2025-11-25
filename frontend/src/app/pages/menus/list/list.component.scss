@@ -1,0 +1,116 @@
+/* Cozy orange palette for Menu list */
+
+$orange-500: #f97316;
+$orange-600: #ea580c;
+$orange-700: #c2410c;
+$muted: #fef3e0;
+
+.menu-list {
+	/* Avoid being hidden under a fixed navbar: use CSS var with fallback */
+	padding-top: calc(var(--navbar-height, 64px) + 0.75rem);
+	position: relative;
+	z-index: 1;
+
+	.menu-header {
+		position: relative;
+		z-index: 3; /* ensure header and its buttons are above the main content */
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+
+		h2 {
+			margin: 0;
+			color: $orange-700;
+			font-weight: 700;
+		}
+
+		.actions {
+			.btn {
+				background: $orange-500;
+				color: #fff;
+				padding: 0.5rem 0.75rem;
+				border-radius: 6px;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1rem;
+	}
+
+	.card {
+		background: linear-gradient(180deg, #fff 0%, $muted 100%);
+		border-radius: 8px;
+		box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+		overflow: hidden;
+
+		.card-body {
+			padding: 1rem;
+
+			.row {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.col {
+					&.title {
+						flex: 1 1 50%;
+
+						.restaurant {
+							font-weight: 600;
+							color: $orange-700;
+						}
+
+						.product {
+							font-size: 0.95rem;
+							color: #555;
+						}
+					}
+
+					&.meta {
+						flex: 0 0 25%;
+						text-align: right;
+
+						.price {
+							font-weight: 700;
+						}
+
+						.availability {
+							margin-top: 0.25rem;
+							font-size: 0.9rem;
+
+							&.available { color: $orange-600; }
+							&.unavailable { color: #888; }
+						}
+					}
+
+					&.actions-col {
+						flex: 0 0 20%;
+						display: flex;
+						gap: 0.5rem;
+						justify-content: flex-end;
+
+						.link {
+							color: $orange-700;
+							text-decoration: none;
+							align-self: center;
+						}
+
+						.btn-ghost {
+							background: transparent;
+							border: 1px solid rgba(0,0,0,0.06);
+							padding: 0.35rem 0.6rem;
+							border-radius: 6px;
+							color: #333;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

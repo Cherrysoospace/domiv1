@@ -1,0 +1,80 @@
+/* Cozy orange form styles for Menu manage */
+
+$orange-500: #f97316;
+$orange-600: #ea580c;
+$orange-700: #c2410c;
+$muted: #fff7ed;
+
+.menu-form {
+	padding: calc(var(--navbar-height, 64px) + 1rem) 1rem 2rem;
+
+	.card {
+		max-width: 720px;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+		background: linear-gradient(180deg, #fff 0%, $muted 100%);
+
+		.card-header {
+			padding: 1rem 1.25rem;
+			border-bottom: 1px solid rgba(0,0,0,0.04);
+
+			h2 {
+				margin: 0;
+				color: $orange-700;
+				font-weight: 700;
+			}
+		}
+
+		.card-body {
+			padding: 1rem 1.25rem;
+
+			.field {
+				margin-bottom: 0.75rem;
+
+				label {
+					display: block;
+					font-weight: 600;
+					margin-bottom: 0.35rem;
+				}
+
+				input, select {
+					width: 100%;
+					padding: 0.5rem 0.65rem;
+					border-radius: 6px;
+					border: 1px solid rgba(0,0,0,0.08);
+					background: #fff;
+				}
+
+				.error {
+					color: #b91c1c;
+					font-size: 0.85rem;
+					margin-top: 0.35rem;
+				}
+			}
+
+			.actions {
+				display: flex;
+				gap: 0.5rem;
+				justify-content: flex-end;
+				margin-top: 0.5rem;
+
+				.btn-primary {
+					background: $orange-500;
+					color: #fff;
+					padding: 0.5rem 0.9rem;
+					border-radius: 6px;
+					border: none;
+				}
+
+				.btn-secondary {
+					background: transparent;
+					border: 1px solid rgba(0,0,0,0.08);
+					padding: 0.5rem 0.9rem;
+					border-radius: 6px;
+				}
+			}
+		}
+	}
+}

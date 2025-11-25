@@ -15,6 +15,7 @@
 										<th scope="col">Nombre</th>
 										<th scope="col">Dirección</th>
 										<th scope="col">Teléfono</th>
+										<th scope="col">Email</th>
 										<th scope="col" class="text-right">Acciones</th>
 									</tr>
 								</thead>
@@ -23,6 +24,7 @@
 										<td>{{ r.name }}</td>
 										<td>{{ r.address }}</td>
 										<td>{{ r.phone }}</td>
+										<td>{{ r.email }}</td>
 										<td class="text-right">
 											<a class="btn btn-sm btn-warning mr-2" [routerLink]="['/restaurants/edit', r.id]">Editar</a>
 											<button class="btn btn-sm btn-danger" (click)="delete(r.id)">Eliminar</button>

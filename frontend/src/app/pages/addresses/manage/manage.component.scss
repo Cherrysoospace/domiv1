@@ -1,0 +1,135 @@
+/* src/app/pages/addresses/manage/manage.component.scss */
+/* Cozy yellow styling for the Manage Address form component */
+
+/* Yellow tokens */
+$sun-bg: #fffaf0;
+$sun-header-bg: #fff6e6;
+$sun-accent: #f59e0b; /* yellow/orange */
+$sun-btn: #f59e0b;
+$sun-btn-hover: darken($sun-btn, 6%);
+$sun-focus: rgba(245,158,11,0.12);
+$sun-shadow: 0 6px 18px rgba(80,50,0,0.04);
+
+:host {
+  display: block;
+
+  .manage-card-wrapper {
+    padding: 28px 0;
+  }
+
+  .cozy-card {
+    background: $sun-bg;
+    border: none;
+    border-radius: 14px;
+    box-shadow: $sun-shadow;
+    overflow: hidden;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+
+  .cozy-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(80,50,0,0.06);
+  }
+
+  .cozy-header {
+    background: $sun-header-bg;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(245,158,11,0.06);
+  }
+
+  .cozy-title {
+    margin: 0;
+    font-weight: 500;
+    color: $sun-accent;
+    font-size: 1.375rem;
+    letter-spacing: 0.2px;
+  }
+
+  .card-body {
+    padding: 22px;
+  }
+
+  .cozy-group {
+    margin-bottom: 16px;
+  }
+
+  .cozy-label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(60,40,10,0.9);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.1px;
+  }
+
+  .cozy-input {
+    background: #fff;
+    border: 1px solid rgba(80,50,0,0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+    height: calc(1.5em + .9rem + 2px);
+    box-shadow: 0 2px 6px rgba(80,50,0,0.03);
+    transition: border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+  }
+
+  input.ng-invalid.ng-touched.cozy-input,
+  textarea.ng-invalid.ng-touched.cozy-input {
+    border-color: rgba(220,53,69,0.9);
+    box-shadow: 0 6px 18px rgba(220,53,69,0.06);
+  }
+
+  input.ng-valid.ng-touched.cozy-input,
+  textarea.ng-valid.ng-touched.cozy-input {
+    border-color: $sun-accent;
+    box-shadow: 0 6px 18px $sun-focus;
+  }
+
+  .cozy-input:focus {
+    outline: none;
+    border-color: $sun-accent;
+    box-shadow: 0 6px 18px $sun-focus;
+  }
+
+  .save-btn {
+    background: $sun-btn;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(245,158,11,0.14);
+    transition: background .12s ease, box-shadow .12s ease, transform .08s ease;
+  }
+
+  .save-btn[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+    box-shadow: none;
+  }
+
+  .save-btn:hover,
+  .save-btn:focus {
+    background: $sun-btn-hover;
+    box-shadow: 0 10px 20px rgba(245,158,11,0.18);
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  @media (max-width: 575.98px) {
+    .card-body {
+      padding: 16px;
+    }
+
+    .cozy-title {
+      font-size: 1.15rem;
+    }
+
+    .save-btn {
+      width: 100%;
+    }
+
+    .d-flex.justify-content-end {
+      justify-content: center !important;
+    }
+  }
+}

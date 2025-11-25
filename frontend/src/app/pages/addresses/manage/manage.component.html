@@ -1,0 +1,51 @@
+<div class="manage-card-wrapper">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="card cozy-card">
+					<div class="card-header cozy-header text-center">
+						<h2 *ngIf="!id" class="cozy-title">Crear Dirección</h2>
+						<h2 *ngIf="id" class="cozy-title">Editar Dirección</h2>
+					</div>
+
+					<div class="card-body">
+						<form [formGroup]="form" (ngSubmit)="save()">
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="street" class="form-control cozy-input" placeholder="Calle" />
+								<p *ngIf="form.controls['street'].invalid && form.controls['street'].touched" class="text-danger small mt-1">El campo street es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="city" class="form-control cozy-input" placeholder="Ciudad" />
+								<p *ngIf="form.controls['city'].invalid && form.controls['city'].touched" class="text-danger small mt-1">El campo city es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="state" class="form-control cozy-input" placeholder="Estado" />
+								<p *ngIf="form.controls['state'].invalid && form.controls['state'].touched" class="text-danger small mt-1">El campo state es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="postal_code" class="form-control cozy-input" placeholder="Código Postal" />
+								<p *ngIf="form.controls['postal_code'].invalid && form.controls['postal_code'].touched" class="text-danger small mt-1">El campo postal_code es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="order_id" class="form-control cozy-input" placeholder="Order ID" />
+								<p *ngIf="form.controls['order_id'].invalid && form.controls['order_id'].touched" class="text-danger small mt-1">El campo order_id es obligatorio</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<input type="text" formControlName="additional_info" class="form-control cozy-input" placeholder="Información adicional" />
+							</div>
+
+							<div class="d-flex justify-content-end">
+								<button type="submit" class="btn save-btn" [disabled]="form.invalid">Guardar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

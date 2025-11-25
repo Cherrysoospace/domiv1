@@ -1,0 +1,29 @@
+:host {
+  --yellow-500: #f6c84c;
+  --yellow-600: #f0b02b;
+}
+
+.card-header {
+  background: linear-gradient(90deg, var(--yellow-500), var(--yellow-600));
+  color: #1f1f1f;
+}
+
+.btn-primary {
+  background-color: var(--yellow-600) !important;
+  border-color: var(--yellow-600) !important;
+  color: #1f1f1f !important;
+}
+
+.btn-primary:hover {
+  /* darkened version of #f0b02b */
+  background-color: #e09c1f !important;
+  border-color: #e09c1f !important;
+}
+
+.table thead {
+  background-color: rgba(246,200,76,0.06);
+}
+
+.text-muted {
+  color: rgba(0,0,0,0.45) !important;
+}

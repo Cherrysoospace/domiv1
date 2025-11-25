@@ -21,29 +21,73 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-header bg-transparent pb-5">
-          <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+          <div class="text-muted text-center mt-2 mb-3"><small>Sign in with OAuth2</small></div>
           <div class="btn-wrapper text-center">
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+            <!-- Botón de GitHub -->
+            <button 
+              (click)="loginWithGithub()" 
+              [disabled]="loading"
+              class="btn btn-neutral btn-icon mb-2">
               <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
               <span class="btn-inner--text">Github</span>
-            </a>
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+            </button>
+            
+            <!-- Botón de Google -->
+            <button 
+              (click)="loginWithGoogle()" 
+              [disabled]="loading"
+              class="btn btn-neutral btn-icon mb-2">
               <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
               <span class="btn-inner--text">Google</span>
-            </a>
+            </button>
+            
+            <!-- Botón de Microsoft -->
+            <button 
+              (click)="loginWithMicrosoft()" 
+              [disabled]="loading"
+              class="btn btn-neutral btn-icon mb-2">
+              <span class="btn-inner--icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23">
+                  <path fill="#f3f3f3" d="M0 0h23v23H0z"/>
+                  <path fill="#f35325" d="M1 1h10v10H1z"/>
+                  <path fill="#81bc06" d="M12 1h10v10H12z"/>
+                  <path fill="#05a6f0" d="M1 12h10v10H1z"/>
+                  <path fill="#ffba08" d="M12 12h10v10H12z"/>
+                </svg>
+              </span>
+              <span class="btn-inner--text">Microsoft</span>
+            </button>
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
             <small>Or sign in with credentials</small>
           </div>
-          <form role="form">
+          
+          <!-- Mensaje de error -->
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span class="alert-icon"><i class="ni ni-fat-remove"></i></span>
+            <span class="alert-text">{{ errorMessage }}</span>
+            <button type="button" class="close" (click)="errorMessage = ''">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Formulario de login -->
+          <form role="form" (ngSubmit)="loginWithEmail()">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email">
+                <input 
+                  class="form-control" 
+                  placeholder="Email" 
+                  type="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  [disabled]="loading"
+                  required>
               </div>
             </div>
             <div class="form-group">
@@ -51,27 +95,40 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <input 
+                  class="form-control" 
+                  placeholder="Password" 
+                  type="password"
+                  [(ngModel)]="password"
+                  name="password"
+                  [disabled]="loading"
+                  required>
               </div>
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
-              <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-              <label class="custom-control-label" for=" customCheckLogin">
+              <input class="custom-control-input" id="customCheckLogin" type="checkbox">
+              <label class="custom-control-label" for="customCheckLogin">
                 <span class="text-muted">Remember me</span>
               </label>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4">Sign in</button>
+              <button 
+                type="submit" 
+                class="btn btn-primary my-4"
+                [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+                {{ loading ? 'Iniciando sesión...' : 'Sign in' }}
+              </button>
             </div>
           </form>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+          <a href="javascript:void(0)" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a href="javascript:void(0)" class="text-light"><small>Create new account</small></a>
+          <a routerLink="/register" class="text-light"><small>Crear nueva cuenta</small></a>
         </div>
       </div>
     </div>

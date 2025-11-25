@@ -1,0 +1,134 @@
+/* src/app/pages/restaurants/manage/manage.component.scss */
+/* Scoped cozy emerald styling for the Manage Restaurant form component */
+
+:host {
+	display: block;
+	.manage-card-wrapper {
+		padding: 28px 0;
+	}
+
+	/* Emerald color tokens */
+	$emerald-bg: #f5fbf9;
+	$emerald-header-bg: #e9f7f4;
+	$emerald-accent: #1fa67a; /* main emerald */
+	$emerald-btn: #16a085;   /* primary button */
+	$emerald-btn-hover: darken($emerald-btn, 6%);
+	$emerald-focus: rgba(31,166,122,0.14);
+	$emerald-shadow: 0 6px 18px rgba(20,60,50,0.06);
+
+	.cozy-card {
+		background: $emerald-bg;
+		border: none;
+		border-radius: 14px;
+		box-shadow: $emerald-shadow;
+		overflow: hidden;
+		transition: transform .12s ease, box-shadow .12s ease;
+	}
+
+	.cozy-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(20,60,50,0.08);
+	}
+
+	.cozy-header {
+		background: $emerald-header-bg;
+		padding: 18px 20px;
+		border-bottom: 1px solid rgba(31,166,122,0.06);
+	}
+
+	.cozy-title {
+		margin: 0;
+		font-weight: 500;
+		color: $emerald-accent;
+		font-size: 1.375rem;
+		letter-spacing: 0.2px;
+	}
+
+	.card-body {
+		padding: 22px;
+	}
+
+	.cozy-group {
+		margin-bottom: 16px;
+	}
+
+	.cozy-label {
+		display: block;
+		margin-bottom: 8px;
+		color: rgba(20, 60, 50, 0.9);
+		font-weight: 500;
+		font-size: 0.95rem;
+		letter-spacing: 0.1px;
+	}
+
+	.cozy-input {
+		background: #fff;
+		border: 1px solid rgba(20, 60, 50, 0.08);
+		border-radius: 8px;
+		padding: 10px 12px;
+		height: calc(1.5em + .9rem + 2px);
+		box-shadow: 0 2px 6px rgba(20,60,50,0.03);
+		transition: border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+	}
+
+	input.ng-invalid.ng-touched.cozy-input,
+	textarea.ng-invalid.ng-touched.cozy-input {
+		border-color: rgba(220,53,69,0.9);
+		box-shadow: 0 6px 18px rgba(220,53,69,0.06);
+	}
+
+	input.ng-valid.ng-touched.cozy-input,
+	textarea.ng-valid.ng-touched.cozy-input {
+		border-color: $emerald-accent;
+		box-shadow: 0 6px 18px $emerald-focus;
+	}
+
+	.cozy-input:focus {
+		outline: none;
+		border-color: $emerald-accent;
+		box-shadow: 0 6px 18px $emerald-focus;
+	}
+
+	.save-btn {
+		background: $emerald-btn;
+		color: #fff;
+		border: none;
+		border-radius: 30px;
+		padding: 8px 18px;
+		font-weight: 600;
+		box-shadow: 0 6px 14px rgba(22,160,133,0.14);
+		transition: background .12s ease, box-shadow .12s ease, transform .08s ease;
+	}
+
+	.save-btn[disabled] {
+		opacity: 0.6;
+		pointer-events: none;
+		box-shadow: none;
+	}
+
+	.save-btn:hover,
+	.save-btn:focus {
+		background: $emerald-btn-hover;
+		box-shadow: 0 10px 20px rgba(22,160,133,0.18);
+		transform: translateY(-1px);
+		color: #fff;
+	}
+
+	@media (max-width: 575.98px) {
+		.card-body {
+			padding: 16px;
+		}
+
+		.cozy-title {
+			font-size: 1.15rem;
+		}
+
+		.save-btn {
+			width: 100%;
+		}
+
+		.d-flex.justify-content-end {
+			justify-content: center !important;
+		}
+	}
+}

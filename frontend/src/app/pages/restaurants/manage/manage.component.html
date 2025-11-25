@@ -1,0 +1,51 @@
+<div class="manage-card-wrapper">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="card cozy-card">
+					<div class="card-header cozy-header text-center">
+						<h2 *ngIf="!id" class="cozy-title">Crear Restaurant</h2>
+						<h2 *ngIf="id" class="cozy-title">Editar Restaurant</h2>
+					</div>
+
+					<div class="card-body">
+						<form [formGroup]="form" (ngSubmit)="save()">
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Nombre</label>
+								<input type="text" formControlName="name" class="form-control cozy-input" />
+								<p *ngIf="form.controls['name'].invalid && form.controls['name'].touched" class="text-danger small mt-1">
+									El nombre es obligatorio
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Dirección</label>
+								<input type="text" formControlName="address" class="form-control cozy-input" />
+								<p *ngIf="form.controls['address'].invalid && form.controls['address'].touched" class="text-danger small mt-1">
+									La dirección es obligatoria
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Teléfono</label>
+								<input type="text" formControlName="phone" class="form-control cozy-input" />
+								<p *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched" class="text-danger small mt-1">
+									El teléfono es obligatorio
+								</p>
+							</div>
+
+							<div class="form-group cozy-group">
+								<label class="cozy-label">Email</label>
+								<input type="email" formControlName="email" class="form-control cozy-input" />
+							</div>
+
+							<div class="d-flex justify-content-end">
+								<button type="submit" class="btn save-btn" [disabled]="form.invalid">Guardar</button>
+							</div>
+						</form>
+					</div>
+				</div> <!-- .cozy-card -->
+			</div>
+		</div>
+	</div>
+</div>

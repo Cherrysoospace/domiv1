@@ -1,0 +1,133 @@
+:host {
+  display: block;
+
+  .manage-card-wrapper {
+    padding: 28px 0;
+  }
+
+  /* Violet palette tokens */
+  $violet-bg: #faf7ff;
+  $violet-header-bg: #f3ecff;
+  $violet-700: #6f42c1; // primary violet
+  $violet-800: #5a2fb0;
+  $violet-btn: #7b5cf6;
+  $violet-btn-hover: darken($violet-btn, 6%);
+  $violet-focus: rgba(123,92,246,0.16);
+  $cozy-shadow: 0 6px 18px rgba(34,60,80,0.06);
+
+  .cozy-card {
+    background: $violet-bg;
+    border: none;
+    border-radius: 14px;
+    box-shadow: $cozy-shadow;
+    overflow: hidden;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+
+  .cozy-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(34,60,80,0.10);
+  }
+
+  .cozy-header {
+    background: $violet-header-bg;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(111,66,193,0.06);
+  }
+
+  .cozy-title {
+    margin: 0;
+    font-weight: 500;
+    color: $violet-700;
+    font-size: 1.375rem;
+    letter-spacing: 0.2px;
+  }
+
+  .card-body {
+    padding: 22px;
+  }
+
+  .cozy-group {
+    margin-bottom: 16px;
+  }
+
+  .cozy-label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(32, 20, 60, 0.9);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.1px;
+  }
+
+  .cozy-input {
+    background: #fff;
+    border: 1px solid rgba(111,66,193,0.08);
+    border-radius: 8px;
+    padding: 10px 12px;
+    height: calc(1.5em + .9rem + 2px);
+    box-shadow: 0 2px 6px rgba(34,60,80,0.04);
+    transition: border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+  }
+
+  input.ng-invalid.ng-touched.cozy-input,
+  textarea.ng-invalid.ng-touched.cozy-input {
+    border-color: rgba(220,53,69,0.9);
+    box-shadow: 0 6px 18px rgba(220,53,69,0.06);
+  }
+
+  input.ng-valid.ng-touched.cozy-input,
+  textarea.ng-valid.ng-touched.cozy-input {
+    border-color: $violet-700;
+    box-shadow: 0 6px 18px $violet-focus;
+  }
+
+  .cozy-input:focus {
+    outline: none;
+    border-color: $violet-700;
+    box-shadow: 0 6px 18px $violet-focus;
+  }
+
+  .save-btn {
+    background: $violet-btn;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(123,92,246,0.18);
+    transition: background .12s ease, box-shadow .12s ease, transform .08s ease;
+  }
+
+  .save-btn[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+    box-shadow: none;
+  }
+
+  .save-btn:hover,
+  .save-btn:focus {
+    background: $violet-btn-hover;
+    box-shadow: 0 10px 20px rgba(123,92,246,0.20);
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  @media (max-width: 575.98px) {
+    .card-body {
+      padding: 16px;
+    }
+
+    .cozy-title {
+      font-size: 1.15rem;
+    }
+
+    .save-btn {
+      width: 100%;
+    }
+
+    .d-flex.justify-content-end {
+      justify-content: center !important;
+    }
+  }
+}

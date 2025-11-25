@@ -1,0 +1,48 @@
+<div class="content">
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Lista de Conductores</h3>
+            <a class="btn btn-sm btn-primary" routerLink="/drivers/create">Nuevo Conductor</a>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Licencia</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col" class="text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let d of drivers">
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.license_number }}</td>
+                    <td>{{ d.phone }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.status }}</td>
+                    <td class="text-right">
+                      <a class="btn btn-sm btn-warning mr-2" routerLink="/drivers/edit/{{d.id}}">Editar</a>
+                      <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div *ngIf="drivers.length === 0" class="text-center text-muted py-3">
+                No hay conductores aún.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:5000',
   geminiApiKey: 'GEMINI_KEY',
-  geminiUrl: 'https://generative.googleapis.com/v1beta2/models/gemini-1.0:generateText'
+  geminiUrl: 'https://generative.googleapis.com/v1beta2/models/gemini-1.0:generateText',
+  mockServerUrl: 'https://e60a8f75-7355-478d-8f96-c7229f8574b6.mock.pstmn.io'
 };
 
 /*

@@ -1,0 +1,31 @@
+/* dashboard styles enhancements */
+.chart-canvas {
+	width: 100% !important;
+}
+
+/* ensure chart container has a minimum height so charts render space before data arrives */
+.card .chart {
+	min-height: 260px;
+	display: block;
+}
+
+.chart-canvas {
+	height: 100% !important;
+}
+
+.group-subtitle {
+	margin-top: 4px;
+	margin-bottom: 12px;
+	color: rgba(33,37,41,0.65);
+}
+
+.card.shadow.h-100 {
+	border-radius: 10px;
+	box-shadow: 0 6px 18px rgba(23,43,77,0.06);
+}
+
+.card-header.border-0 h3.mb-0 {
+	font-weight: 600;
+	font-size: 1.05rem;
+}
+

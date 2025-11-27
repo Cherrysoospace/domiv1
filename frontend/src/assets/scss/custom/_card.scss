@@ -1,5 +1,5 @@
 //
-// Cards
+// Cards - Delivery Platform Customization
 //
 
 @import "../core/cards/card";
@@ -7,3 +7,175 @@
 @import "../core/cards/card-blockquote";
 @import "../core/cards/card-animations";
 @import "../core/cards/card-stats";
+
+// ========================================
+// 🏍️ PERSONALIZACIÓN DE CARDS - TEMA AZUL
+// ========================================
+
+.card {
+  border-radius: 14px !important;
+  border: 1px solid rgba(30, 136, 229, 0.1);
+  box-shadow: 0 2px 12px rgba(13, 71, 161, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  background: white;
+  
+  // Hover elegante con sombra azul
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(30, 136, 229, 0.25) !important;
+    border-color: rgba(30, 136, 229, 0.2);
+  }
+  
+  // Header con degradado AZUL - ALTO CONTRASTE
+  .card-header {
+    background: linear-gradient(90deg, #1E88E5 0%, #42A5F5 100%) !important;
+    color: #FFFFFF !important;
+    border-bottom: none;
+    padding: 1.5rem 1.75rem;
+    border-radius: 14px 14px 0 0 !important;
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #FFFFFF !important;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+    p, span, small {
+      color: #FFFFFF !important;
+      opacity: 0.95;
+    }
+  }
+  
+  // Body con padding consistente
+  .card-body {
+    padding: 1.75rem;
+  }
+  
+  // Footer con fondo azul muy claro
+  .card-footer {
+    background: rgba(227, 242, 253, 0.4); // blue-very-light con transparencia
+    border-top: 1px solid rgba(30, 136, 229, 0.12);
+    padding: 1.25rem 1.75rem;
+  }
+}
+
+// ========================================
+// CARD DE ESTADÍSTICAS - TEMA AZUL
+// ========================================
+
+.card-stats {
+  .card-body {
+    padding: 1.75rem;
+    
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+      transition: all 0.3s ease;
+      
+      i {
+        font-size: 26px;
+        color: white;
+      }
+      
+      // Colores temáticos para iconos - PALETA AZUL
+      &.bg-gradient-red,
+      &.bg-gradient-primary {
+        background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%) !important;
+      }
+      
+      &.bg-gradient-orange,
+      &.bg-gradient-warning {
+        background: linear-gradient(135deg, #FFA726 0%, #FFB74D 100%) !important;
+      }
+      
+      &.bg-gradient-green,
+      &.bg-gradient-success {
+        background: linear-gradient(135deg, #00ACC1 0%, #26C6DA 100%) !important;
+      }
+      
+      &.bg-gradient-blue,
+      &.bg-gradient-info {
+        background: linear-gradient(135deg, #039BE5 0%, #29B6F6 100%) !important;
+      }
+      
+      &:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(30, 136, 229, 0.35);
+      }
+    }
+    
+    // Números grandes
+    .h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      color: #0D47A1; // dark blue
+    }
+    
+    // Porcentajes de cambio
+    .text-success {
+      font-weight: 600;
+      color: #00ACC1 !important;
+    }
+    
+    .text-danger {
+      font-weight: 600;
+      color: #EF5350 !important;
+    }
+  }
+}
+
+// ========================================
+// CARD DE PERFIL - TEMA AZUL
+// ========================================
+
+.card-profile {
+  .card-profile-image {
+    img {
+      border: 5px solid #1E88E5; // primary blue
+      box-shadow: 0 8px 28px rgba(30, 136, 229, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        transform: scale(1.08);
+        box-shadow: 0 12px 40px rgba(30, 136, 229, 0.6);
+        border-color: #42A5F5; // secondary blue
+      }
+    }
+  }
+}
+
+// ========================================
+// CARD CON LISTA - TEMA AZUL
+// ========================================
+
+.card-list {
+  .list-group-item {
+    border-left: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+    
+    &:hover {
+      background: rgba(30, 136, 229, 0.08);
+      border-left-color: #1E88E5; // primary blue
+      transform: translateX(6px);
+      box-shadow: 0 2px 8px rgba(30, 136, 229, 0.15);
+    }
+    
+    &.active {
+      background: rgba(30, 136, 229, 0.12);
+      border-left-color: #42A5F5;
+      color: #0D47A1;
+      font-weight: 600;
+    }
+  }
+}

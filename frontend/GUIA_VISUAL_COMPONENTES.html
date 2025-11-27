@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Platform - Guía de Componentes Visuales</title>
+  <link rel="stylesheet" href="./src/styles.scss">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      padding: 2rem;
+    }
+    .demo-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .demo-section h2 {
+      font-family: 'Poppins', sans-serif;
+      color: #2D3436;
+      border-bottom: 3px solid #FF4B3A;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .code-example {
+      background: #2D3436;
+      color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       HEADER DE LA GUÍA
+  ======================================== -->
+  <header style="text-align: center; margin-bottom: 3rem;">
+    <h1 style="font-family: 'Poppins', sans-serif; color: #FF4B3A; font-size: 3rem; margin-bottom: 0.5rem;">
+      🏍️ Delivery Platform
+    </h1>
+    <p style="color: #636e72; font-size: 1.25rem;">
+      Guía Visual de Componentes Personalizados
+    </p>
+  </header>
+
+  <!-- ========================================
+       1. BOTONES
+  ======================================== -->
+  <section class="demo-section">
+    <h2>🔘 Botones</h2>
+    
+    <h3>Botones Principales</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <button class="btn btn-primary">
+        <i class="ni ni-check-bold"></i>
+        Confirmar Pedido
+      </button>
+      <button class="btn btn-secondary">
+        <i class="ni ni-cart"></i>
+        Ver Carrito
+      </button>
+      <button class="btn btn-success">
+        <i class="ni ni-delivery-fast"></i>
+        Marcar Entregado
+      </button>
+      <button class="btn btn-danger">
+        <i class="ni ni-fat-remove"></i>
+        Cancelar Pedido
+      </button>
+      <button class="btn btn-info">
+        <i class="ni ni-zoom-split-in"></i>
+        Ver Detalles
+      </button>
+      <button class="btn btn-warning">
+        <i class="ni ni-bell-55"></i>
+        Advertencia
+      </button>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Tamaños de Botones</h3>
+    <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+      <button class="btn btn-primary btn-sm">Pequeño</button>
+      <button class="btn btn-primary">Normal</button>
+      <button class="btn btn-primary btn-lg">Grande</button>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Botones Icon Only</h3>
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+      <button class="btn btn-primary btn-icon-only">
+        <i class="ni ni-plus"></i>
+      </button>
+      <button class="btn btn-danger btn-icon-only">
+        <i class="ni ni-fat-remove"></i>
+      </button>
+      <button class="btn btn-info btn-icon-only">
+        <i class="ni ni-zoom-split-in"></i>
+      </button>
+    </div>
+
+    <div class="code-example">
+&lt;button class="btn btn-primary"&gt;
+  &lt;i class="ni ni-check-bold"&gt;&lt;/i&gt;
+  Confirmar Pedido
+&lt;/button&gt;
+
+&lt;button class="btn btn-primary btn-sm"&gt;Pequeño&lt;/button&gt;
+&lt;button class="btn btn-primary btn-icon-only"&gt;
+  &lt;i class="ni ni-plus"&gt;&lt;/i&gt;
+&lt;/button&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       2. BADGES
+  ======================================== -->
+  <section class="demo-section">
+    <h2>🏷️ Badges</h2>
+    
+    <h3>Badges de Estado de Pedidos</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-en-camino">En Camino</span>
+      <span class="badge badge-entregado">Entregado</span>
+      <span class="badge badge-cancelado">Cancelado</span>
+      <span class="badge badge-pendiente">Pendiente</span>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Badges de Colores</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-primary">Destacado</span>
+      <span class="badge badge-secondary">Secundario</span>
+      <span class="badge badge-success">Éxito</span>
+      <span class="badge badge-danger">Peligro</span>
+      <span class="badge badge-info">Información</span>
+      <span class="badge badge-warning">Advertencia</span>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Badges con Dot</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-dot badge-dot-primary">Conductor 1</span>
+      <span class="badge badge-dot badge-dot-success">En Línea</span>
+      <span class="badge badge-dot badge-dot-danger">Fuera de Línea</span>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Badges Outline</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-outline-primary">Nuevo</span>
+      <span class="badge badge-outline-success">Verificado</span>
+      <span class="badge badge-outline-danger">Urgente</span>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Badge de Notificación</h3>
+    <div style="position: relative; display: inline-block; margin-top: 1rem;">
+      <button class="btn btn-primary btn-icon-only">
+        <i class="ni ni-bell-55"></i>
+      </button>
+      <span class="badge-notification">12</span>
+    </div>
+
+    <div class="code-example">
+&lt;span class="badge badge-en-camino"&gt;En Camino&lt;/span&gt;
+&lt;span class="badge badge-dot badge-dot-success"&gt;En Línea&lt;/span&gt;
+&lt;span class="badge badge-outline-primary"&gt;Nuevo&lt;/span&gt;
+
+&lt;div style="position: relative;"&gt;
+  &lt;i class="ni ni-bell-55"&gt;&lt;/i&gt;
+  &lt;span class="badge-notification"&gt;12&lt;/span&gt;
+&lt;/div&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       3. TARJETAS
+  ======================================== -->
+  <section class="demo-section">
+    <h2>🃏 Tarjetas (Cards)</h2>
+    
+    <div class="demo-grid">
+      <!-- Card Simple -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Pedidos del Día</h3>
+        </div>
+        <div class="card-body">
+          <p>Contenido de la tarjeta aquí...</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-primary btn-sm">Ver Más</button>
+        </div>
+      </div>
+
+      <!-- Card de Estadísticas -->
+      <div class="card card-stats">
+        <div class="card-body">
+          <div class="card-stats">
+            <div class="stat-icon bg-primary">
+              <i class="ni ni-cart"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">156</span>
+              <span class="stat-label">Pedidos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card con Imagen -->
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Imagen">
+        <div class="card-body">
+          <h5 class="card-title">Título de Tarjeta</h5>
+          <p class="card-text">Descripción breve del contenido.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-example">
+&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Pedidos del Día&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;Contenido de la tarjeta aquí...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       4. FORMULARIOS
+  ======================================== -->
+  <section class="demo-section">
+    <h2>📝 Formularios</h2>
+    
+    <form>
+      <!-- Input de Texto -->
+      <div class="form-group">
+        <label>
+          <i class="ni ni-circle-08"></i>
+          Nombre del Cliente
+          <span class="required">*</span>
+        </label>
+        <input type="text" class="form-control" placeholder="Ingrese el nombre">
+      </div>
+
+      <!-- Select -->
+      <div class="form-group">
+        <label>
+          <i class="ni ni-tag"></i>
+          Estado del Pedido
+        </label>
+        <select class="form-control">
+          <option>Seleccione...</option>
+          <option>Pendiente</option>
+          <option>En Camino</option>
+          <option>Entregado</option>
+        </select>
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label>
+          <i class="ni ni-align-left-2"></i>
+          Observaciones
+        </label>
+        <textarea class="form-control" rows="3" placeholder="Ingrese las observaciones"></textarea>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="terms">
+        <label class="custom-control-label" for="terms">
+          Acepto los términos y condiciones
+        </label>
+      </div>
+
+      <!-- Radio Buttons -->
+      <div style="margin-top: 1rem;">
+        <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="delivery" name="type">
+          <label class="custom-control-label" for="delivery">
+            Entrega a Domicilio
+          </label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="pickup" name="type">
+          <label class="custom-control-label" for="pickup">
+            Recoger en Tienda
+          </label>
+        </div>
+      </div>
+
+      <!-- Switch -->
+      <div class="custom-control custom-switch" style="margin-top: 1rem;">
+        <input type="checkbox" class="custom-control-input" id="notifications">
+        <label class="custom-control-label" for="notifications">
+          Notificaciones Activas
+        </label>
+      </div>
+
+      <!-- Botones de Envío -->
+      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary">
+          <i class="ni ni-send"></i>
+          Guardar
+        </button>
+        <button type="reset" class="btn btn-secondary">
+          <i class="ni ni-fat-remove"></i>
+          Cancelar
+        </button>
+      </div>
+    </form>
+
+    <div class="code-example">
+&lt;div class="form-group"&gt;
+  &lt;label&gt;
+    &lt;i class="ni ni-circle-08"&gt;&lt;/i&gt;
+    Nombre del Cliente
+    &lt;span class="required"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input type="text" class="form-control" placeholder="Ingrese el nombre"&gt;
+&lt;/div&gt;
+
+&lt;div class="custom-control custom-switch"&gt;
+  &lt;input type="checkbox" class="custom-control-input" id="notifications"&gt;
+  &lt;label class="custom-control-label" for="notifications"&gt;
+    Notificaciones Activas
+  &lt;/label&gt;
+&lt;/div&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       5. TABLAS
+  ======================================== -->
+  <section class="demo-section">
+    <h2>📊 Tablas</h2>
+    
+    <div class="table-responsive">
+      <table class="table table-orders">
+        <thead>
+          <tr>
+            <th>ID Pedido</th>
+            <th>Cliente</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="order-id">#12345</td>
+            <td>Juan Pérez</td>
+            <td>
+              <span class="order-status en-camino">En Camino</span>
+            </td>
+            <td class="order-price">$45.000</td>
+            <td class="order-date">2024-01-15</td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-view" title="Ver">
+                  <i class="ni ni-zoom-split-in"></i>
+                </button>
+                <button class="btn-action btn-edit" title="Editar">
+                  <i class="ni ni-ruler-pencil"></i>
+                </button>
+                <button class="btn-action btn-delete" title="Eliminar">
+                  <i class="ni ni-fat-remove"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="order-id">#12346</td>
+            <td>María García</td>
+            <td>
+              <span class="order-status entregado">Entregado</span>
+            </td>
+            <td class="order-price">$32.500</td>
+            <td class="order-date">2024-01-15</td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-view">
+                  <i class="ni ni-zoom-split-in"></i>
+                </button>
+                <button class="btn-action btn-edit">
+                  <i class="ni ni-ruler-pencil"></i>
+                </button>
+                <button class="btn-action btn-delete">
+                  <i class="ni ni-fat-remove"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="order-id">#12347</td>
+            <td>Pedro López</td>
+            <td>
+              <span class="order-status pendiente">Pendiente</span>
+            </td>
+            <td class="order-price">$58.000</td>
+            <td class="order-date">2024-01-15</td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-view">
+                  <i class="ni ni-zoom-split-in"></i>
+                </button>
+                <button class="btn-action btn-edit">
+                  <i class="ni ni-ruler-pencil"></i>
+                </button>
+                <button class="btn-action btn-delete">
+                  <i class="ni ni-fat-remove"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="order-id">#12348</td>
+            <td>Ana Martínez</td>
+            <td>
+              <span class="order-status cancelado">Cancelado</span>
+            </td>
+            <td class="order-price">$28.000</td>
+            <td class="order-date">2024-01-14</td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-view">
+                  <i class="ni ni-zoom-split-in"></i>
+                </button>
+                <button class="btn-action btn-delete">
+                  <i class="ni ni-fat-remove"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <nav style="margin-top: 1.5rem;">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Anterior</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="code-example">
+&lt;div class="table-responsive"&gt;
+  &lt;table class="table table-orders"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;ID Pedido&lt;/th&gt;
+        &lt;th&gt;Cliente&lt;/th&gt;
+        &lt;th&gt;Estado&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class="order-id"&gt;#12345&lt;/td&gt;
+        &lt;td&gt;Juan Pérez&lt;/td&gt;
+        &lt;td&gt;
+          &lt;span class="order-status en-camino"&gt;En Camino&lt;/span&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       6. ALERTAS
+  ======================================== -->
+  <section class="demo-section">
+    <h2>⚠️ Alertas</h2>
+    
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div class="alert alert-success" role="alert">
+        <i class="ni ni-check-bold"></i>
+        <strong>¡Éxito!</strong> El pedido ha sido guardado correctamente.
+      </div>
+
+      <div class="alert alert-danger" role="alert">
+        <i class="ni ni-fat-remove"></i>
+        <strong>Error:</strong> No se pudo procesar el pago.
+      </div>
+
+      <div class="alert alert-warning" role="alert">
+        <i class="ni ni-bell-55"></i>
+        <strong>Advertencia:</strong> El conductor está retrasado.
+      </div>
+
+      <div class="alert alert-info" role="alert">
+        <i class="ni ni-bulb-61"></i>
+        <strong>Información:</strong> Nueva actualización disponible.
+      </div>
+    </div>
+
+    <div class="code-example">
+&lt;div class="alert alert-success" role="alert"&gt;
+  &lt;i class="ni ni-check-bold"&gt;&lt;/i&gt;
+  &lt;strong&gt;¡Éxito!&lt;/strong&gt; El pedido ha sido guardado.
+&lt;/div&gt;
+    </div>
+  </section>
+
+  <!-- ========================================
+       7. PALETA DE COLORES
+  ======================================== -->
+  <section class="demo-section">
+    <h2>🎨 Paleta de Colores</h2>
+    
+    <div class="demo-grid">
+      <div style="background: #FF4B3A; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#FF4B3A</h4>
+        <p style="margin: 0.5rem 0 0;">Primary Red</p>
+      </div>
+      <div style="background: #FF8C42; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#FF8C42</h4>
+        <p style="margin: 0.5rem 0 0;">Secondary Orange</p>
+      </div>
+      <div style="background: #00B894; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#00B894</h4>
+        <p style="margin: 0.5rem 0 0;">Success Green</p>
+      </div>
+      <div style="background: #0984E3; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#0984E3</h4>
+        <p style="margin: 0.5rem 0 0;">Info Blue</p>
+      </div>
+      <div style="background: #FDCB6E; padding: 2rem; border-radius: 12px; text-align: center; color: #2D3436;">
+        <h4 style="margin: 0;">#FDCB6E</h4>
+        <p style="margin: 0.5rem 0 0;">Warning Yellow</p>
+      </div>
+      <div style="background: #D63031; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#D63031</h4>
+        <p style="margin: 0.5rem 0 0;">Danger Red</p>
+      </div>
+      <div style="background: #2D3436; padding: 2rem; border-radius: 12px; text-align: center; color: white;">
+        <h4 style="margin: 0;">#2D3436</h4>
+        <p style="margin: 0.5rem 0 0;">Dark Gray</p>
+      </div>
+      <div style="background: #F8F9FA; padding: 2rem; border-radius: 12px; text-align: center; color: #2D3436; border: 2px solid #dfe6e9;">
+        <h4 style="margin: 0;">#F8F9FA</h4>
+        <p style="margin: 0.5rem 0 0;">Light Gray</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #dfe6e9;">
+    <p style="color: #636e72;">
+      <strong>Delivery Platform - DomiV1</strong><br>
+      Guía de Componentes Visuales | 2024
+    </p>
+  </footer>
+
+</body>
+</html>

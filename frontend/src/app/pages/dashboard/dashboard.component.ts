@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import Chart from 'chart.js';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
 import { groupSalesByDate, groupOrdersByDay, formatOrdersByHour, lastStatePerMotorcycle } from 'src/app/services/dashboard/dashboard-utils';
 import { parseOptions, chartOptions } from 'src/app/variables/charts';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +29,120 @@ export class DashboardComponent implements OnInit, OnDestroy {
     'Estado actual de la flota'
   ];
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(
+    private dashboardService: DashboardService,
+    private http: HttpClient,
+    private alertService: AlertService,
+    private authService: AuthService
+  ) {}
+
+  /**
+   * 🧪 MÉTODO DE PRUEBA PARA VERIFICAR LA CONEXIÓN FRONTEND-BACKEND
+   * 
+   * Este método hace peticiones de prueba al backend Flask para verificar:
+   * 1. ✅ Que el token JWT se inyecta correctamente en el header Authorization
+   * 2. ✅ Que el backend está corriendo y responde
+   * 3. ✅ Que CORS está configurado correctamente
+   * 4. ✅ Que el interceptor funciona
+   * 
+   * CÓMO VER EL TOKEN:
+   * 1. Click en este botón
+   * 2. Abre DevTools (F12) → Network
+   * 3. Click en cualquier petición (orders, restaurants, etc.)
+   * 4. Tab "Headers"
+   * 5. Busca: "Authorization: Bearer [tu-token-jwt-aqui]"
+   */
+  async probarConexionBackend() {
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log('🧪 INICIANDO PRUEBA DE CONEXIÓN FRONTEND → BACKEND');
+    console.log('═══════════════════════════════════════════════════════════════');
+    
+    // PASO 1: Verificar que hay usuario autenticado
+    const usuario = this.authService.getCurrentUser();
+    if (!usuario) {
+      console.error('❌ No hay usuario autenticado');
+      this.alertService.error('Debes hacer login primero');
+      return;
+    }
+    
+    console.log('✅ Usuario autenticado:', usuario.displayName);
+    console.log('📧 Email:', usuario.email);
+    
+    // PASO 2: Obtener el token JWT
+    const token = await this.authService.getIdToken();
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log('🔑 TOKEN JWT OBTENIDO');
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log('Token completo (primeros 200 caracteres):');
+    console.log(token?.substring(0, 200) + '...');
+    console.log('═══════════════════════════════════════════════════════════════');
+    
+    // PASO 3: Hacer peticiones al backend
+    console.log('📡 HACIENDO PETICIONES AL BACKEND...');
+    console.log('Base URL: http://localhost:5000');
+    console.log('═══════════════════════════════════════════════════════════════');
+    
+    const endpoints = [
+      { url: 'http://localhost:5000/restaurants', nombre: 'Restaurantes' },
+      { url: 'http://localhost:5000/products', nombre: 'Productos' },
+      { url: 'http://localhost:5000/orders', nombre: 'Pedidos' }
+    ];
+    
+    let exitosas = 0;
+    let fallidas = 0;
+    
+    endpoints.forEach((endpoint, index) => {
+      setTimeout(() => {
+        console.log(`\n📤 Petición ${index + 1}/${endpoints.length}: ${endpoint.nombre}`);
+        console.log(`   URL: ${endpoint.url}`);
+        console.log(`   Header: Authorization: Bearer ${token?.substring(0, 30)}...`);
+        
+        this.http.get(endpoint.url).subscribe(
+          response => {
+            console.log(`✅ ${endpoint.nombre}: Respuesta exitosa`);
+            console.log('   Datos:', response);
+            exitosas++;
+            
+            if (index === endpoints.length - 1) {
+              console.log('═══════════════════════════════════════════════════════════════');
+              console.log(`🎉 PRUEBA COMPLETADA: ${exitosas} exitosas, ${fallidas} fallidas`);
+              console.log('═══════════════════════════════════════════════════════════════');
+              console.log('✅ Para ver el token en DevTools:');
+              console.log('   1. F12 → Network');
+              console.log('   2. Click en cualquier petición');
+              console.log('   3. Tab "Headers"');
+              console.log('   4. Busca "Authorization: Bearer [token]"');
+              console.log('═══════════════════════════════════════════════════════════════');
+              
+              this.alertService.success(`✅ ${exitosas} peticiones exitosas! Revisa la consola y Network`);
+            }
+          },
+          error => {
+            console.error(`❌ ${endpoint.nombre}: Error`);
+            console.error('   Código:', error.status);
+            console.error('   Mensaje:', error.message);
+            
+            if (error.status === 0) {
+              console.error('   💡 Backend no está corriendo o CORS bloqueado');
+              console.error('   💡 Inicia el backend con: python run.py');
+            }
+            
+            fallidas++;
+            
+            if (index === endpoints.length - 1) {
+              console.log('═══════════════════════════════════════════════════════════════');
+              console.log(`⚠️ PRUEBA COMPLETADA: ${exitosas} exitosas, ${fallidas} fallidas`);
+              console.log('═══════════════════════════════════════════════════════════════');
+              
+              if (fallidas > 0) {
+                this.alertService.warning(`Backend no está corriendo. Inicia con: python run.py`);
+              }
+            }
+          }
+        );
+      }, index * 500); // Espaciamos las peticiones 500ms
+    });
+  }
 
   ngOnInit() {
     // Apply global chart defaults from variables/charts
@@ -97,15 +213,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } catch (e) { /* ignore plugin errors */ }
 
     // Load all required datasets and render charts
+    // Add delays to avoid 429 errors from Postman Mock Server
     this.initSalesByDay();
-    this.initOrdersByDay();
-    this.initOrdersByHour();
-    this.initProductsByCategory();
-    this.initOrdersByDriver();
-    this.initMotorcycleBattery();
-    this.initProductsCategoryPie();
-    this.initOrdersStatusPie();
-    this.initMotorcycleFleetPie();
+    setTimeout(() => this.initOrdersByDay(), 300);
+    setTimeout(() => this.initOrdersByHour(), 600);
+    setTimeout(() => this.initProductsByCategory(), 900);
+    setTimeout(() => this.initOrdersByDriver(), 1200);
+    setTimeout(() => this.initMotorcycleBattery(), 1500);
+    setTimeout(() => this.initProductsCategoryPie(), 1800);
+    setTimeout(() => this.initOrdersStatusPie(), 2100);
+    setTimeout(() => this.initMotorcycleFleetPie(), 2400);
   }
 
   ngOnDestroy(): void {

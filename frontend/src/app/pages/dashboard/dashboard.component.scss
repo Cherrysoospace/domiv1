@@ -1,31 +1,178 @@
-/* dashboard styles enhancements */
-.chart-canvas {
-	width: 100% !important;
+/* 🏍️ DASHBOARD - DOMI DELIVERY TEMA AZUL */
+
+// ========================================
+// HEADER CON GRADIENTE AZUL
+// ========================================
+
+.header {
+  &.bg-gradient-blue {
+    background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 50%, #42A5F5 100%) !important;
+  }
 }
 
-/* ensure chart container has a minimum height so charts render space before data arrives */
+// ========================================
+// CARD DE PRUEBA BACKEND
+// ========================================
+
+.card-test-backend {
+  background: linear-gradient(135deg, #00ACC1 0%, #00BCD4 100%) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 172, 193, 0.3) !important;
+}
+
+// ========================================
+// ICONOS DE ESTADÍSTICAS - TEMA AZUL
+// ========================================
+
+.icon-shape {
+  &.bg-blue-primary {
+    background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%) !important;
+  }
+  
+  &.bg-blue-secondary {
+    background: linear-gradient(135deg, #42A5F5 0%, #64B5F6 100%) !important;
+  }
+  
+  &.bg-blue-info {
+    background: linear-gradient(135deg, #0D47A1 0%, #1565C0 100%) !important;
+  }
+  
+  &.bg-blue-success {
+    background: linear-gradient(135deg, #00ACC1 0%, #26C6DA 100%) !important;
+  }
+}
+
+// ========================================
+// NÚMEROS ESTADÍSTICOS AZULES
+// ========================================
+
+.text-blue {
+  color: #0D47A1 !important;
+}
+
+// ========================================
+// CARDS DE ESTADÍSTICAS
+// ========================================
+
+.card-stats {
+  border-radius: 14px !important;
+  box-shadow: 0 4px 16px rgba(13, 71, 161, 0.08) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(13, 71, 161, 0.15) !important;
+  }
+  
+  .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+  
+  .icon-shape {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+// ========================================
+// CHARTS Y GRÁFICOS
+// ========================================
+
+.chart-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .card .chart {
-	min-height: 260px;
-	display: block;
-}
-
-.chart-canvas {
-	height: 100% !important;
+  min-height: 260px;
+  display: block;
 }
 
 .group-subtitle {
-	margin-top: 4px;
-	margin-bottom: 12px;
-	color: rgba(33,37,41,0.65);
+  margin-top: 4px;
+  margin-bottom: 12px;
+  color: rgba(33,37,41,0.65);
+  font-family: 'Inter', sans-serif;
 }
 
 .card.shadow.h-100 {
-	border-radius: 10px;
-	box-shadow: 0 6px 18px rgba(23,43,77,0.06);
+  border-radius: 14px !important;
+  box-shadow: 0 4px 16px rgba(13, 71, 161, 0.08) !important;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12) !important;
+  }
 }
 
-.card-header.border-0 h3.mb-0 {
-	font-weight: 600;
-	font-size: 1.05rem;
+.card-header.border-0 {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 14px 14px 0 0 !important;
+  
+  h3.mb-0 {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #0D47A1;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+// ========================================
+// BOTÓN DE PRUEBA
+// ========================================
+
+.btn-white {
+  background: white !important;
+  color: #00ACC1 !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 12px !important;
+  padding: 12px 32px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 172, 193, 0.3) !important;
+    color: #00838F !important;
+  }
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 768px) {
+  .card-stats {
+    margin-bottom: 1rem !important;
+  }
+  
+  .icon-shape {
+    width: 40px;
+    height: 40px;
+    
+    i {
+      font-size: 18px;
+    }
+  }
 }
 

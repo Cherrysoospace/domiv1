@@ -1,10 +1,10 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
+<div class="header bg-gradient-blue py-7 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
-          <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          <h1 class="text-white">¡Bienvenido!</h1>
+          <p class="text-lead text-light">Utilice estos fantásticos formularios para iniciar sesión o crear una nueva cuenta en su proyecto de forma gratuita.</p>
         </div>
       </div>
     </div>
@@ -21,31 +21,33 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-header bg-transparent pb-5">
-          <div class="text-muted text-center mt-2 mb-3"><small>Sign in with OAuth2</small></div>
+          <div class="text-center mt-2 mb-4">
+            <h5 class="oauth-title">Iniciar sesión con OAuth2</h5>
+          </div>
           <div class="btn-wrapper text-center">
             <!-- Botón de GitHub -->
             <button 
               (click)="loginWithGithub()" 
               [disabled]="loading"
-              class="btn btn-neutral btn-icon mb-2">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
-              <span class="btn-inner--text">Github</span>
+              class="btn btn-github btn-icon mb-3 w-100">
+              <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg" width="20"></span>
+              <span class="btn-inner--text">Continuar con GitHub</span>
             </button>
             
             <!-- Botón de Google -->
             <button 
               (click)="loginWithGoogle()" 
               [disabled]="loading"
-              class="btn btn-neutral btn-icon mb-2">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
-              <span class="btn-inner--text">Google</span>
+              class="btn btn-google btn-icon mb-3 w-100">
+              <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg" width="20"></span>
+              <span class="btn-inner--text">Continuar con Google</span>
             </button>
             
             <!-- Botón de Microsoft -->
             <button 
               (click)="loginWithMicrosoft()" 
               [disabled]="loading"
-              class="btn btn-neutral btn-icon mb-2">
+              class="btn btn-microsoft btn-icon mb-3 w-100">
               <span class="btn-inner--icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23">
                   <path fill="#f3f3f3" d="M0 0h23v23H0z"/>
@@ -55,13 +57,15 @@
                   <path fill="#ffba08" d="M12 12h10v10H12z"/>
                 </svg>
               </span>
-              <span class="btn-inner--text">Microsoft</span>
+              <span class="btn-inner--text">Continuar con Microsoft</span>
             </button>
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Or sign in with credentials</small>
+          <div class="text-center mb-4">
+            <div class="divider-with-text">
+              <span class="divider-text">O inicia sesión con credenciales</span>
+            </div>
           </div>
           
           <!-- Mensaje de error -->

@@ -1,7 +1,294 @@
 //
-// Button
+// Button - Delivery Platform Customization
 //
 
 @import "../core/buttons/button";
 @import "../core/buttons/button-icon";
 @import "../core/buttons/button-brand";
+
+// ========================================
+// 🏍️ PERSONALIZACIÓN DE BOTONES - TEMA AZUL
+// ========================================
+
+.btn {
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+  
+  // Iconos dentro de botones
+  i, .ni {
+    margin-right: 8px;
+    font-size: 1.05rem;
+    transition: transform 0.3s ease;
+  }
+  
+  // Efecto hover
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    
+    i, .ni {
+      transform: translateX(4px);
+    }
+  }
+  
+  // Efecto active/click
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  // Efecto ripple azulado
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:active::after {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// ========================================
+// BOTÓN PRIMARIO - AZUL PRINCIPAL CON ALTO CONTRASTE
+// ========================================
+
+.btn-primary {
+  background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%) !important;
+  border: none;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  
+  &:hover {
+    background: linear-gradient(135deg, #1976D2 0%, #1E88E5 100%) !important;
+    box-shadow: 0 8px 28px rgba(30, 136, 229, 0.5) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.25) !important;
+  }
+  
+  &:active {
+    background: #0D47A1 !important;
+  }
+}
+
+// ========================================
+// BOTÓN SECUNDARIO - AZUL CLARO
+// ========================================
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #42A5F5;
+  color: #42A5F5;
+  font-weight: 600;
+  
+  &:hover {
+    background: #42A5F5;
+    color: white;
+    border-color: #42A5F5;
+    box-shadow: 0 6px 20px rgba(66, 165, 245, 0.4);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(66, 165, 245, 0.2);
+  }
+}
+
+// ========================================
+// BOTÓN DE ÉXITO - CYAN VERDE
+// ========================================
+
+.btn-success {
+  background: linear-gradient(135deg, #00ACC1 0%, #26C6DA 100%) !important;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.35);
+  
+  &:hover {
+    background: linear-gradient(135deg, #00838F 0%, #00ACC1 100%) !important;
+    box-shadow: 0 8px 24px rgba(0, 172, 193, 0.5) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.25) !important;
+  }
+}
+
+// ========================================
+// BOTÓN DE PELIGRO - ROJO
+// ========================================
+
+.btn-danger {
+  background: #EF5350 !important;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 83, 80, 0.35);
+  
+  &:hover {
+    background: #D32F2F !important;
+    box-shadow: 0 8px 24px rgba(239, 83, 80, 0.5) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(239, 83, 80, 0.25) !important;
+  }
+}
+
+// ========================================
+// BOTÓN DE INFORMACIÓN - AZUL CIELO
+// ========================================
+
+.btn-info {
+  background: linear-gradient(135deg, #039BE5 0%, #29B6F6 100%) !important;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(3, 155, 229, 0.35);
+  
+  &:hover {
+    background: linear-gradient(135deg, #0277BD 0%, #039BE5 100%) !important;
+    box-shadow: 0 8px 24px rgba(3, 155, 229, 0.5) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(3, 155, 229, 0.25) !important;
+  }
+}
+
+// ========================================
+// BOTÓN DE ADVERTENCIA - NARANJA
+// ========================================
+
+.btn-warning {
+  background: linear-gradient(135deg, #FFA726 0%, #FFB74D 100%) !important;
+  border: none;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.35);
+  
+  &:hover {
+    background: linear-gradient(135deg, #FB8C00 0%, #FFA726 100%) !important;
+    box-shadow: 0 8px 24px rgba(255, 167, 38, 0.5) !important;
+    color: white;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(255, 167, 38, 0.25) !important;
+  }
+}
+
+// ========================================
+// BOTONES PEQUEÑOS
+// ========================================
+
+.btn-sm {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+// ========================================
+// BOTONES GRANDES
+// ========================================
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+// ========================================
+// BOTÓN ICON ONLY
+// ========================================
+
+.btn-icon-only {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  
+  i, .ni {
+    margin: 0;
+  }
+  
+  &:hover {
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+// ========================================
+// GRUPO DE BOTONES
+// ========================================
+
+.btn-group {
+  .btn {
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+    
+    &:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+    
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+}
+
+// ========================================
+// BOTÓN FLOTANTE (FAB) - TEMA AZUL
+// ========================================
+
+.btn-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 8px 28px rgba(30, 136, 229, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%);
+  border: none;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  i, .ni {
+    font-size: 26px;
+    margin: 0;
+    color: white;
+  }
+  
+  &:hover {
+    transform: scale(1.15) rotate(90deg);
+    box-shadow: 0 12px 40px rgba(30, 136, 229, 0.7);
+    background: linear-gradient(135deg, #1976D2 0%, #1E88E5 100%);
+  }
+  
+  &:active {
+    transform: scale(1.05) rotate(90deg);
+  }
+}

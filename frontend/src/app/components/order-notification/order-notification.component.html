@@ -1,0 +1,64 @@
+<!-- Notificación flotante -->
+<div class="order-notification-popup" 
+     [class.show]="showNotification" 
+     *ngIf="currentNotification">
+  <div class="notification-card">
+    <div class="notification-header">
+      <div class="notification-icon">
+        <i class="fas fa-motorcycle fa-2x"></i>
+      </div>
+      <div class="notification-title">
+        <h4>🔔 ¡Nuevo Pedido!</h4>
+        <span class="badge badge-success">Pedido #{{ currentNotification.orderId }}</span>
+      </div>
+      <button class="close-btn" (click)="hideNotification()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="notification-body">
+      <div class="notification-detail">
+        <i class="fas fa-user text-primary"></i>
+        <strong>Cliente:</strong> {{ currentNotification.customerName }}
+      </div>
+      <div class="notification-detail">
+        <i class="fas fa-utensils text-warning"></i>
+        <strong>Producto:</strong> {{ currentNotification.items }}
+      </div>
+      <div class="notification-detail">
+        <i class="fas fa-map-marker-alt text-danger"></i>
+        <strong>Dirección:</strong> {{ currentNotification.address }}
+      </div>
+      <div class="notification-time">
+        <i class="far fa-clock"></i>
+        {{ currentNotification.timestamp | date:'HH:mm:ss' }}
+      </div>
+    </div>
+
+    <div class="notification-actions">
+      <button class="btn btn-sm btn-primary" routerLink="/orders">
+        <i class="fas fa-eye"></i> Ver Pedidos
+      </button>
+      <button class="btn btn-sm btn-success" routerLink="/orders/map">
+        <i class="fas fa-map"></i> Ver en Mapa
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Panel lateral de historial (opcional) -->
+<div class="notification-history" *ngIf="notifications.length > 0">
+  <button class="history-toggle" (click)="notifications.length = 0">
+    <i class="fas fa-bell"></i>
+    <span class="badge badge-danger" *ngIf="notifications.length > 0">
+      {{ notifications.length }}
+    </span>
+  </button>
+</div>
+
+<!-- Botón para habilitar sonido (para navegadores con bloqueo de autoplay) -->
+<button class="enable-sound-btn" 
+        (click)="enableSound()" 
+        title="Habilitar sonido de notificaciones">
+  <i class="fas fa-volume-up"></i>
+</button>

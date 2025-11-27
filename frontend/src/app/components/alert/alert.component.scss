@@ -1,0 +1,78 @@
+/* CONTENEDOR DE ALERTAS - Posición fija arriba a la derecha */
+.alert-container {
+  position: fixed;
+  top: 80px;  /* Debajo del navbar */
+  right: 20px;
+  z-index: 9999;  /* Por encima de todo */
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Animación de entrada */
+.alert {
+  margin-bottom: 15px;
+  animation: slideInRight 0.4s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Colores según tipo (usando los colores de Argon Dashboard) */
+.alert-success {
+  background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+  color: white;
+  border: none;
+}
+
+.alert-error {
+  background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
+  color: white;
+  border: none;
+}
+
+.alert-warning {
+  background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important;
+  color: white;
+  border: none;
+}
+
+.alert-info {
+  background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+  color: white;
+  border: none;
+}
+
+/* Ícono */
+.alert-icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+/* Botón de cerrar */
+.close {
+  color: white;
+  opacity: 0.8;
+  text-shadow: none;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .alert-container {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

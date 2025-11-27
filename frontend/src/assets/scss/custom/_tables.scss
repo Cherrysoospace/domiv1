@@ -1,5 +1,413 @@
 //
-// Tables
+// Tables - Delivery Platform Customization
 //
 
 @import "../core/tables/table";
+
+// ========================================
+// 🍕 PERSONALIZACIÓN DE TABLAS - TEMA AZUL
+// ========================================
+
+.table {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(30, 136, 229, 0.1);
+  
+  // Encabezado de tabla - AZUL CON ALTO CONTRASTE
+  thead th {
+    background: linear-gradient(90deg, #1E88E5 0%, #42A5F5 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 1.25rem 1.5rem;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  // Filas del cuerpo
+  tbody tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      background: rgba(30, 136, 229, 0.08);
+      box-shadow: 0 2px 10px rgba(30, 136, 229, 0.12);
+      transform: translateY(-1px);
+    }
+    
+    td {
+      padding: 1.25rem 1.5rem;
+      vertical-align: middle;
+      font-family: 'Inter', sans-serif;
+      border-bottom: 1px solid rgba(30, 136, 229, 0.08);
+    }
+  }
+  
+  // Tabla con filas alternadas
+  &.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(227, 242, 253, 0.3); // blue-very-light
+  }
+}
+
+// ========================================
+// TABLA DE PEDIDOS - TEMA AZUL
+// ========================================
+
+.table-orders {
+  .order-id {
+    font-weight: 700;
+    color: #1E88E5; // primary blue
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+  }
+  
+  .order-status {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    
+    &.en-camino,
+    &.on-way {
+      background: #1E88E5; // primary blue
+      color: white;
+      animation: pulse-status 2s infinite;
+    }
+    
+    &.entregado,
+    &.delivered {
+      background: #00ACC1; // success cyan
+      color: white;
+    }
+    
+    &.cancelado,
+    &.cancelled {
+      background: #EF5350; // danger red
+      color: white;
+    }
+    
+    &.pendiente,
+    &.pending {
+      background: #FFA726; // warning orange
+      color: white;
+    }
+    
+    &.preparando,
+    &.preparing {
+      background: #42A5F5; // secondary blue
+      color: white;
+    }
+  }
+  
+  .order-price {
+    font-weight: 700;
+    font-size: 1.15rem;
+    font-family: 'Poppins', sans-serif;
+    color: #00ACC1; // success cyan
+  }
+  
+  .order-date {
+    color: #8898aa;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+// ========================================
+// TABLA DE PRODUCTOS - TEMA AZUL
+// ========================================
+
+.table-products {
+  .product-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #42A5F5; // secondary blue
+    box-shadow: 0 2px 8px rgba(66, 165, 245, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+      border-color: #1E88E5;
+    }
+  }
+  
+  .product-name {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: #0D47A1; // dark blue
+  }
+  
+  .product-category {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background: rgba(30, 136, 229, 0.12);
+    color: #1E88E5; // primary blue
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  
+  .product-price {
+    font-weight: 700;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1E88E5; // primary blue
+  }
+  
+  .product-stock {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    
+    &.low-stock {
+      color: #EF5350; // danger red
+    }
+    
+    &.medium-stock {
+      color: #FFA726; // warning orange
+    }
+    
+    &.high-stock {
+      color: #00ACC1; // success cyan
+    }
+  }
+}
+
+// ========================================
+// TABLA DE CONDUCTORES - TEMA AZUL
+// ========================================
+
+.table-drivers {
+  .driver-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 3px solid #1E88E5; // primary blue
+    box-shadow: 0 2px 10px rgba(30, 136, 229, 0.3);
+    object-fit: cover;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+      border-color: #42A5F5;
+    }
+  }
+  
+  .driver-name {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: #0D47A1; // dark blue
+  }
+  
+  .driver-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      
+      &.online {
+        background: #00ACC1; // success cyan
+        box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.25);
+        animation: pulse-dot 2s infinite;
+      }
+      
+      &.offline {
+        background: #8898aa;
+        box-shadow: 0 0 0 4px rgba(136, 152, 170, 0.15);
+      }
+    }
+  }
+  
+  .driver-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #FDCB6E;
+    font-weight: 600;
+    
+    i {
+      font-size: 1.05rem;
+      color: #FFA726; // warning orange
+    }
+  }
+}
+
+// ========================================
+// TABLA RESPONSIVA - TEMA AZUL
+// ========================================
+
+.table-responsive {
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(13, 71, 161, 0.12);
+  overflow-x: auto;
+  
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(227, 242, 253, 0.5); // blue-very-light
+    border-radius: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #1E88E5; // primary blue
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    
+    &:hover {
+      background: #1976D2;
+      background-clip: padding-box;
+    }
+    
+    &:active {
+      background: #0D47A1;
+      background-clip: padding-box;
+    }
+  }
+}
+
+// ========================================
+// ACCIONES EN TABLA - TEMA AZUL
+// ========================================
+
+.table-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  
+  .btn-action {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    
+    i {
+      font-size: 16px;
+    }
+    
+    &.btn-view {
+      background: rgba(3, 155, 229, 0.12);
+      color: #039BE5; // info blue
+      
+      &:hover {
+        background: #039BE5;
+        color: white;
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 4px 12px rgba(3, 155, 229, 0.4);
+      }
+    }
+    
+    &.btn-edit {
+      background: rgba(255, 167, 38, 0.12);
+      color: #FFA726; // warning orange
+      
+      &:hover {
+        background: #FFA726;
+        color: white;
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 4px 12px rgba(255, 167, 38, 0.4);
+      }
+    }
+    
+    &.btn-delete {
+      background: rgba(239, 83, 80, 0.12);
+      color: #EF5350; // danger red
+      
+      &:hover {
+        background: #EF5350;
+        color: white;
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 4px 12px rgba(239, 83, 80, 0.4);
+      }
+    }
+  }
+}
+
+// ========================================
+// PAGINACIÓN - TEMA AZUL
+// ========================================
+
+.pagination {
+  .page-item {
+    margin: 0 5px;
+    
+    .page-link {
+      border-radius: 10px;
+      border: 2px solid transparent;
+      color: #0D47A1; // dark blue
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 0.5rem 0.85rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        background: rgba(30, 136, 229, 0.12);
+        border-color: #1E88E5;
+        color: #1E88E5;
+        transform: translateY(-2px);
+      }
+    }
+    
+    &.active .page-link {
+      background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%);
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 4px 14px rgba(30, 136, 229, 0.45);
+    }
+    
+    &.disabled .page-link {
+      opacity: 0.35;
+      cursor: not-allowed;
+      background: transparent;
+      color: #8898aa;
+    }
+  }
+}
+
+// ========================================
+// ANIMACIONES - TEMA AZUL
+// ========================================
+
+@keyframes pulse-status {
+  0%, 100% {
+    box-shadow: 0 2px 6px rgba(30, 136, 229, 0.15), 0 0 0 0 rgba(30, 136, 229, 0.7);
+  }
+  50% {
+    box-shadow: 0 2px 6px rgba(30, 136, 229, 0.15), 0 0 0 10px rgba(30, 136, 229, 0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 172, 193, 0);
+  }
+}

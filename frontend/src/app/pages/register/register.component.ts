@@ -33,15 +33,18 @@ export class RegisterComponent implements OnInit {
 
   /**
    * REGISTRO CON GOOGLE
-   * Reutiliza el método de login con Google
+   * NOTA: OAuth2 (Google, GitHub, Microsoft) no diferencia entre registro y login
+   * Si la cuenta no existe, Firebase la crea automáticamente
+   * Si la cuenta ya existe, simplemente inicia sesión
    */
   async registerWithGoogle() {
     this.loading = true;
     this.errorMessage = '';
     
     try {
+      // OAuth2 crea la cuenta si no existe, o inicia sesión si existe
       const userProfile = await this.authService.loginWithGoogle();
-      console.log('🎉 Registro exitoso con Google');
+      console.log('🎉 Autenticación exitosa con Google');
       this.handleSuccessfulRegister(userProfile);
     } catch (error: any) {
       this.errorMessage = error.message;
@@ -53,7 +56,7 @@ export class RegisterComponent implements OnInit {
 
   /**
    * REGISTRO CON GITHUB
-   * Reutiliza el método de login con GitHub
+   * OAuth2 crea la cuenta automáticamente si no existe
    */
   async registerWithGithub() {
     this.loading = true;
@@ -61,7 +64,7 @@ export class RegisterComponent implements OnInit {
     
     try {
       const userProfile = await this.authService.loginWithGithub();
-      console.log('🎉 Registro exitoso con GitHub');
+      console.log('🎉 Autenticación exitosa con GitHub');
       this.handleSuccessfulRegister(userProfile);
     } catch (error: any) {
       this.errorMessage = error.message;
@@ -73,7 +76,7 @@ export class RegisterComponent implements OnInit {
 
   /**
    * REGISTRO CON MICROSOFT
-   * Reutiliza el método de login con Microsoft
+   * OAuth2 crea la cuenta automáticamente si no existe
    */
   async registerWithMicrosoft() {
     this.loading = true;
@@ -81,7 +84,7 @@ export class RegisterComponent implements OnInit {
     
     try {
       const userProfile = await this.authService.loginWithMicrosoft();
-      console.log('🎉 Registro exitoso con Microsoft');
+      console.log('🎉 Autenticación exitosa con Microsoft');
       this.handleSuccessfulRegister(userProfile);
     } catch (error: any) {
       this.errorMessage = error.message;

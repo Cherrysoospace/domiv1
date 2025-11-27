@@ -1,0 +1,112 @@
+<!-- CONTENEDOR DE LA TABLA -->
+<div class="table-container">
+  
+  <!-- BARRA DE BÚSQUEDA -->
+  <div class="table-header">
+    <div class="search-box">
+      <i class="ni ni-zoom-split-in"></i>
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+        [placeholder]="searchPlaceholder"
+        class="form-control">
+    </div>
+    
+    <div class="table-info">
+      Mostrando {{ paginatedData.length }} de {{ filteredData.length }} registros
+    </div>
+  </div>
+
+  <!-- TABLA -->
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <!-- Headers de columnas -->
+          <th *ngFor="let column of columns" 
+              [class.sortable]="column.sortable !== false"
+              (click)="sortBy(column)">
+            {{ column.header }}
+            
+            <!-- Indicador de ordenamiento -->
+            <span *ngIf="sortColumn === column.field" class="sort-indicator">
+              <i *ngIf="sortDirection === 'asc'" class="ni ni-bold-up"></i>
+              <i *ngIf="sortDirection === 'desc'" class="ni ni-bold-down"></i>
+            </span>
+          </th>
+          
+          <!-- Columna de acciones -->
+          <th *ngIf="showActions" class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <!-- Fila vacía si no hay datos -->
+        <tr *ngIf="paginatedData.length === 0">
+          <td [attr.colspan]="columns.length + (showActions ? 1 : 0)" 
+              class="text-center text-muted">
+            <i class="ni ni-folder-17"></i>
+            <p class="mt-2">No se encontraron registros</p>
+          </td>
+        </tr>
+        
+        <!-- Filas de datos -->
+        <tr *ngFor="let item of paginatedData">
+          <!-- Celdas de datos -->
+          <td *ngFor="let column of columns">
+            {{ item[column.field] }}
+          </td>
+          
+          <!-- Celda de acciones -->
+          <td *ngIf="showActions" class="text-center">
+            <button 
+              class="btn btn-sm btn-icon btn-primary"
+              (click)="edit(item)"
+              title="Editar">
+              <i class="ni ni-ruler-pencil"></i>
+            </button>
+            
+            <button 
+              class="btn btn-sm btn-icon btn-danger"
+              (click)="delete(item)"
+              title="Eliminar">
+              <i class="ni ni-fat-remove"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <div class="table-footer" *ngIf="totalPages > 1">
+    <nav>
+      <ul class="pagination">
+        <!-- Botón anterior -->
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="goToPage(currentPage - 1)">
+            <i class="ni ni-bold-left"></i>
+          </a>
+        </li>
+        
+        <!-- Números de página -->
+        <li class="page-item" 
+            *ngFor="let page of getPageNumbers()"
+            [class.active]="page === currentPage">
+          <a class="page-link" (click)="goToPage(page)">
+            {{ page }}
+          </a>
+        </li>
+        
+        <!-- Botón siguiente -->
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="goToPage(currentPage + 1)">
+            <i class="ni ni-bold-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</div>

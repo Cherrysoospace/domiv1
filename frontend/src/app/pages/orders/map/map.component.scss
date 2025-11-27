@@ -1,0 +1,56 @@
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.info-window-content {
+  padding: 8px;
+  min-width: 200px;
+  
+  h6 {
+    color: #0D47A1;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  p {
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  
+  strong {
+    color: #495057;
+  }
+}
+
+.border-left-primary {
+  border-left: 4px solid #1E88E5;
+}
+
+.badge-lg {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  
+  i {
+    font-size: 0.6rem;
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Ajustes responsivos
+@media (max-width: 768px) {
+  .map-container {
+    height: 400px;
+  }
+}

@@ -1,0 +1,338 @@
+/* 🏍️ LOGIN PAGE - DOMI DELIVERY AZUL */
+
+// ========================================
+// HEADER CON GRADIENTE AZUL
+// ========================================
+
+.header {
+  &.bg-gradient-blue {
+    background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 50%, #42A5F5 100%) !important;
+    min-height: 400px;
+  }
+}
+
+// ========================================
+// TARJETA DE LOGIN
+// ========================================
+
+.card {
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(13, 71, 161, 0.2) !important;
+  
+  .card-header {
+    padding: 2rem 1.5rem !important;
+    border-radius: 16px 16px 0 0 !important;
+    
+    .oauth-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #0D47A1;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+}
+
+// ========================================
+// BOTONES OAUTH - ESTILO MODERNO
+// ========================================
+
+.btn-wrapper {
+  .btn {
+    border-radius: 12px !important;
+    padding: 14px 24px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 2px solid transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    
+    .btn-inner--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+    }
+    
+    .btn-inner--text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(-1px);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  // Botón GitHub - Negro
+  .btn-github {
+    background: #24292e !important;
+    color: white !important;
+    
+    &:hover:not(:disabled) {
+      background: #1a1e22 !important;
+      box-shadow: 0 8px 24px rgba(36, 41, 46, 0.4) !important;
+    }
+  }
+  
+  // Botón Google - Blanco con borde
+  .btn-google {
+    background: white !important;
+    color: #5f6368 !important;
+    border: 2px solid #dadce0 !important;
+    
+    .btn-inner--text {
+      color: #5f6368 !important;
+    }
+    
+    &:hover:not(:disabled) {
+      background: #f8f9fa !important;
+      border-color: #1E88E5 !important;
+      color: #1E88E5 !important;
+      
+      .btn-inner--text {
+        color: #1E88E5 !important;
+      }
+      
+      box-shadow: 0 8px 24px rgba(30, 136, 229, 0.2) !important;
+    }
+  }
+  
+  // Botón Microsoft - Azul Microsoft
+  .btn-microsoft {
+    background: white !important;
+    color: #5e5e5e !important;
+    border: 2px solid #8c8c8c !important;
+    
+    .btn-inner--text {
+      color: #5e5e5e !important;
+    }
+    
+    &:hover:not(:disabled) {
+      background: #f3f2f1 !important;
+      border-color: #0078d4 !important;
+      color: #0078d4 !important;
+      
+      .btn-inner--text {
+        color: #0078d4 !important;
+      }
+      
+      box-shadow: 0 8px 24px rgba(0, 120, 212, 0.2) !important;
+    }
+  }
+}
+
+// ========================================
+// DIVISOR CON TEXTO
+// ========================================
+
+.divider-with-text {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #dee2e6, transparent);
+  }
+  
+  &::before {
+    left: 0;
+  }
+  
+  &::after {
+    right: 0;
+  }
+  
+  .divider-text {
+    background: white;
+    padding: 0 1rem;
+    color: #8898aa;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+// ========================================
+// INPUTS Y FORMULARIO
+// ========================================
+
+.form-group {
+  .input-group {
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08) !important;
+    transition: all 0.3s ease;
+    
+    &:focus-within {
+      box-shadow: 0 4px 16px rgba(30, 136, 229, 0.2) !important;
+      
+      .input-group-text {
+        background: #1E88E5 !important;
+        border-color: #1E88E5 !important;
+        color: white !important;
+      }
+    }
+    
+    .input-group-text {
+      background: #f8f9fa;
+      border-right: none;
+      transition: all 0.3s ease;
+      
+      i {
+        color: #8898aa;
+      }
+    }
+    
+    .form-control {
+      border-left: none;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      
+      &:focus {
+        border-color: #dee2e6;
+      }
+    }
+  }
+}
+
+// ========================================
+// BOTÓN DE SUBMIT
+// ========================================
+
+.btn-primary {
+  background: linear-gradient(135deg, #1E88E5 0%, #42A5F5 100%) !important;
+  border: none !important;
+  padding: 14px 48px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 20px rgba(30, 136, 229, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(30, 136, 229, 0.5) !important;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
+// ========================================
+// CHECKBOX PERSONALIZADO
+// ========================================
+
+.custom-control {
+  .custom-control-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    
+    &::before {
+      border: 2px solid #dee2e6;
+      border-radius: 6px;
+    }
+  }
+  
+  .custom-control-input:checked ~ .custom-control-label::before {
+    background: #1E88E5;
+    border-color: #1E88E5;
+  }
+}
+
+// ========================================
+// ENLACES
+// ========================================
+
+.text-light {
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  
+  &:hover {
+    color: #42A5F5 !important;
+    text-decoration: none;
+  }
+}
+
+// ========================================
+// ALERTAS
+// ========================================
+
+.alert {
+  border-radius: 12px !important;
+  border: none !important;
+  font-family: 'Inter', sans-serif;
+  
+  &.alert-danger {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%) !important;
+    color: #EF5350 !important;
+    
+    .alert-icon i {
+      color: #EF5350;
+    }
+  }
+}
+
+// ========================================
+// SPINNER DE CARGA
+// ========================================
+
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 768px) {
+  .card-header {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .btn-wrapper .btn {
+    font-size: 0.875rem !important;
+    padding: 12px 20px !important;
+  }
+  
+  .divider-with-text {
+    &::before,
+    &::after {
+      width: 35%;
+    }
+  }
+}

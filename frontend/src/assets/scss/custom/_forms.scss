@@ -1,7 +1,433 @@
 //
-// Forms
+// Forms - Delivery Platform Customization
 //
 
 @import "../core/forms/form";
 @import "../core/forms/form-validation";
 @import "../core/forms/input-group";
+
+// ========================================
+// 📝 PERSONALIZACIÓN DE FORMULARIOS - DELIVERY
+// ========================================
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+  
+  label {
+    font-weight: 600;
+    color: #2D3436;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    .required {
+      color: #D63031;
+      font-size: 1.125rem;
+    }
+    
+    i, .ni {
+      color: #FF8C42;
+      font-size: 1rem;
+    }
+  }
+}
+
+// ========================================
+// INPUTS DE TEXTO
+// ========================================
+
+.form-control {
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #2D3436;
+  transition: all 0.3s ease;
+  
+  &::placeholder {
+    color: #b2bec3;
+    font-weight: 400;
+  }
+  
+  &:focus {
+    border-color: #FF4B3A;
+    box-shadow: 0 0 0 4px rgba(255, 75, 58, 0.1);
+    outline: none;
+    transform: translateY(-2px);
+  }
+  
+  &:hover:not(:disabled):not(:focus) {
+    border-color: #FF8C42;
+  }
+  
+  &:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &.is-invalid {
+    border-color: #D63031;
+    
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(214, 48, 49, 0.1);
+    }
+  }
+  
+  &.is-valid {
+    border-color: #00B894;
+    
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(0, 184, 148, 0.1);
+    }
+  }
+}
+
+// ========================================
+// TEXTAREA
+// ========================================
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Inter', sans-serif;
+}
+
+// ========================================
+// SELECT
+// ========================================
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FF4B3A' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
+  appearance: none;
+  cursor: pointer;
+  
+  &:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FF4B3A' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3E%3C/svg%3E");
+  }
+}
+
+// ========================================
+// CHECKBOXES Y RADIOS
+// ========================================
+
+.custom-control {
+  padding-left: 1.75rem;
+  
+  .custom-control-input {
+    &:checked ~ .custom-control-label::before {
+      background: linear-gradient(87deg, #FF4B3A 0, #FF8C42 100%);
+      border-color: #FF4B3A;
+    }
+    
+    &:focus ~ .custom-control-label::before {
+      box-shadow: 0 0 0 3px rgba(255, 75, 58, 0.2);
+    }
+  }
+  
+  .custom-control-label {
+    font-weight: 500;
+    color: #2D3436;
+    cursor: pointer;
+    
+    &::before {
+      border: 2px solid #dfe6e9;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.custom-checkbox {
+  .custom-control-label::before {
+    border-radius: 6px;
+  }
+}
+
+.custom-radio {
+  .custom-control-label::before {
+    border-radius: 50%;
+  }
+}
+
+// ========================================
+// SWITCHES
+// ========================================
+
+.custom-switch {
+  .custom-control-label {
+    &::before {
+      border-radius: 50px;
+      background: #dfe6e9;
+      width: 44px;
+      height: 24px;
+      left: -2.5rem;
+    }
+    
+    &::after {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: white;
+      top: calc(0.25rem + 3px);
+      left: calc(-2.5rem + 3px);
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &::before {
+        background: linear-gradient(87deg, #FF4B3A 0, #FF8C42 100%);
+        border-color: #FF4B3A;
+      }
+      
+      &::after {
+        transform: translateX(20px);
+      }
+    }
+  }
+}
+
+// ========================================
+// INPUT GROUP
+// ========================================
+
+.input-group {
+  .input-group-prepend,
+  .input-group-append {
+    .input-group-text {
+      background: linear-gradient(87deg, #FF4B3A 0, #FF8C42 100%);
+      color: white;
+      border: none;
+      font-weight: 600;
+      border-radius: 8px;
+      
+      i, .ni {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .form-control {
+    &:focus {
+      z-index: 3;
+    }
+  }
+}
+
+// ========================================
+// BÚSQUEDA
+// ========================================
+
+.search-input {
+  position: relative;
+  
+  .form-control {
+    padding-left: 3rem;
+    border-radius: 24px;
+    
+    &::placeholder {
+      color: #b2bec3;
+    }
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FF8C42;
+    font-size: 1.125rem;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .clear-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b2bec3;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: #D63031;
+      transform: translateY(-50%) scale(1.2);
+    }
+  }
+}
+
+// ========================================
+// FILE UPLOAD
+// ========================================
+
+.custom-file {
+  .custom-file-label {
+    border: 2px dashed #dfe6e9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &::after {
+      content: 'Seleccionar';
+      background: linear-gradient(87deg, #FF4B3A 0, #FF8C42 100%);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    
+    &:hover {
+      border-color: #FF8C42;
+      background: rgba(255, 140, 66, 0.05);
+    }
+  }
+  
+  .custom-file-input {
+    &:focus ~ .custom-file-label {
+      border-color: #FF4B3A;
+      box-shadow: 0 0 0 4px rgba(255, 75, 58, 0.1);
+    }
+  }
+}
+
+// ========================================
+// VALIDACIÓN DE FORMULARIO
+// ========================================
+
+.invalid-feedback {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #D63031;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  
+  i {
+    font-size: 1rem;
+  }
+}
+
+.valid-feedback {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #00B894;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  
+  i {
+    font-size: 1rem;
+  }
+}
+
+// ========================================
+// FORMULARIO DE DIRECCIÓN
+// ========================================
+
+.address-form {
+  .map-container {
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 2px solid #dfe6e9;
+  }
+  
+  .address-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    
+    .suggestion-item {
+      padding: 0.875rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid #f1f3f5;
+      
+      &:hover {
+        background: rgba(255, 75, 58, 0.05);
+        padding-left: 1.5rem;
+      }
+      
+      .suggestion-title {
+        font-weight: 600;
+        color: #2D3436;
+        margin-bottom: 0.25rem;
+      }
+      
+      .suggestion-address {
+        font-size: 0.75rem;
+        color: #636e72;
+      }
+    }
+  }
+}
+
+// ========================================
+// FORMULARIO DE PAGO
+// ========================================
+
+.payment-form {
+  .payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    
+    .payment-method {
+      border: 2px solid #dfe6e9;
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        border-color: #FF8C42;
+        transform: translateY(-4px);
+      }
+      
+      &.active {
+        border-color: #FF4B3A;
+        background: rgba(255, 75, 58, 0.05);
+        box-shadow: 0 4px 12px rgba(255, 75, 58, 0.2);
+      }
+      
+      i {
+        font-size: 2rem;
+        color: #FF8C42;
+        margin-bottom: 0.5rem;
+      }
+      
+      .method-name {
+        font-weight: 600;
+        color: #2D3436;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

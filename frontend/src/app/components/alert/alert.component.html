@@ -1,0 +1,30 @@
+<!-- CONTENEDOR DE ALERTAS (posición fija arriba a la derecha) -->
+<div class="alert-container">
+  <div *ngFor="let alert of alerts" 
+       class="alert alert-dismissible fade show"
+       [ngClass]="'alert-' + alert.type"
+       role="alert">
+    
+    <!-- Ícono según el tipo -->
+    <span class="alert-icon">
+      <i [class]="getIcon(alert.type)"></i>
+    </span>
+    
+    <!-- Mensaje -->
+    <span class="alert-text">
+      <strong *ngIf="alert.type === 'success'">¡Éxito!</strong>
+      <strong *ngIf="alert.type === 'error'">Error</strong>
+      <strong *ngIf="alert.type === 'warning'">Advertencia</strong>
+      <strong *ngIf="alert.type === 'info'">Información</strong>
+      {{ alert.message }}
+    </span>
+    
+    <!-- Botón de cerrar -->
+    <button type="button" 
+            class="close" 
+            (click)="removeAlert(alert)"
+            aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListComponent } from './list/list.component';
 import { ManageComponent } from './manage/manage.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   { path: '', component: ListComponent },
   { path: 'create', component: ManageComponent },
   { path: 'edit/:id', component: ManageComponent },
+  { path: 'map', component: MapComponent },
 ];
 
 @NgModule({

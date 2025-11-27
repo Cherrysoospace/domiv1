@@ -1,0 +1,45 @@
+<!-- MODAL BACKDROP (fondo oscuro) -->
+<div class="modal-backdrop" 
+     *ngIf="isVisible" 
+     (click)="onBackdropClick($event)"
+     [@fadeIn]>
+  
+  <!-- MODAL DIALOG -->
+  <div class="modal-dialog" [@slideDown]>
+    
+    <!-- HEADER -->
+    <div class="modal-header">
+      <h5 class="modal-title">{{ config.title }}</h5>
+      <button type="button" 
+              class="close" 
+              (click)="close()"
+              aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <!-- BODY -->
+    <div class="modal-body">
+      <p>{{ config.message }}</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="modal-footer">
+      <!-- Botón cancelar (opcional) -->
+      <button *ngIf="config.showCancel" 
+              type="button" 
+              class="btn btn-secondary" 
+              (click)="onCancel()">
+        {{ config.cancelText }}
+      </button>
+      
+      <!-- Botón confirmar -->
+      <button type="button" 
+              class="btn btn-primary" 
+              (click)="onConfirm()">
+        {{ config.confirmText }}
+      </button>
+    </div>
+    
+  </div>
+</div>

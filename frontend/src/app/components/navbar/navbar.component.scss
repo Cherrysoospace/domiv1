@@ -1,0 +1,367 @@
+/* 🏍️ NAVBAR AZUL - DELIVERY PLATFORM */
+
+// ========================================
+// NAVBAR PRINCIPAL - TEMA GRIS OSCURO
+// ========================================
+
+.navbar {
+  background: #495057 !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  padding: 1.25rem 1.75rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  
+  // Título de la página actual - BLANCO CON CONTRASTE
+  .navbar-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #ffffff !important; // blanco sobre gris oscuro
+    margin: 0;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  // Override para el título en HTML
+  .text-white {
+    color: #ffffff !important;
+  }
+  
+  // Nombre del usuario en el navbar
+  .media-body {
+    .font-weight-bold {
+      color: #ffffff !important;
+    }
+  }
+}
+
+// ========================================
+// AVATAR DE USUARIO - TEMA AZUL
+// ========================================
+
+.user-avatar-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 10px 14px;
+  border-radius: 50px;
+  
+  &:hover {
+    background: rgba(30, 136, 229, 0.08); // Azul suave al hover
+  }
+  
+  .user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid #1E88E5; // primary blue
+    box-shadow: 0 2px 10px rgba(30, 136, 229, 0.35);
+    object-fit: cover;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 16px rgba(30, 136, 229, 0.5);
+      border-color: #42A5F5; // secondary blue
+    }
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff; // blanco sobre navbar oscuro
+      margin: 0;
+    }
+    
+    .user-email {
+      font-size: 0.75rem;
+      color: #ced4da;
+      margin: 0;
+    }
+  }
+  
+  .dropdown-icon {
+    font-size: 13px;
+    color: #1E88E5; // primary blue
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .dropdown-icon {
+    transform: rotate(180deg);
+    color: #42A5F5; // secondary blue
+  }
+}
+
+// ========================================
+// MENÚ DESPLEGABLE DE USUARIO - TEMA AZUL
+// ========================================
+
+.dropdown-menu {
+  border-radius: 14px;
+  border: 1px solid rgba(30, 136, 229, 0.15);
+  box-shadow: 0 12px 48px rgba(13, 71, 161, 0.18);
+  padding: 10px;
+  margin-top: 10px;
+  min-width: 220px;
+  
+  .dropdown-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(30, 136, 229, 0.12);
+    background: rgba(30, 136, 229, 0.05);
+    border-radius: 8px 8px 0 0;
+    margin: -10px -10px 10px;
+    
+    .user-name-dropdown {
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      color: #0D47A1; // dark blue
+      margin: 0;
+    }
+    
+    .user-email-dropdown {
+      font-size: 0.75rem;
+      color: #8898aa;
+      margin: 0;
+    }
+  }
+  
+  .dropdown-item {
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    i {
+      font-size: 17px;
+      color: #42A5F5; // secondary blue
+      transition: all 0.25s ease;
+      min-width: 20px;
+    }
+    
+    &:hover {
+      background: rgba(30, 136, 229, 0.12);
+      color: #1E88E5; // primary blue
+      transform: translateX(6px);
+      
+      i {
+        color: #1E88E5;
+        transform: scale(1.1);
+      }
+    }
+    
+    // Botón de cerrar sesión - ROJO DANGER
+    &.logout-btn {
+      color: #EF5350; // danger red
+      border-top: 1px solid rgba(239, 83, 80, 0.15);
+      margin-top: 10px;
+      padding-top: 14px;
+      
+      i {
+        color: #EF5350;
+      }
+      
+      &:hover {
+        background: rgba(239, 83, 80, 0.12);
+        color: #D32F2F;
+        
+        i {
+          color: #D32F2F;
+        }
+      }
+    }
+  }
+}
+
+// ========================================
+// NOTIFICACIONES - TEMA AZUL
+// ========================================
+
+.notifications-container {
+  position: relative;
+  margin-right: 24px;
+  
+  .notification-bell {
+    font-size: 26px;
+    color: #8898aa;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      color: #1E88E5; // primary blue
+      transform: rotate(15deg) scale(1.15);
+      filter: drop-shadow(0 2px 6px rgba(30, 136, 229, 0.4));
+    }
+  }
+  
+  .notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #EF5350; // danger red sólido
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    padding: 4px 7px;
+    border-radius: 12px;
+    min-width: 22px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(239, 83, 80, 0.5);
+    border: 2px solid white;
+    animation: pulse-badge 2.5s infinite;
+  }
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(239, 83, 80, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(239, 83, 80, 0.7);
+  }
+}
+
+// ========================================
+// HAMBURGER MENU (Móvil) - TEMA AZUL
+// ========================================
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: rgba(30, 136, 229, 0.1);
+  }
+  
+  .hamburger-icon {
+    width: 30px;
+    height: 3px;
+    background: #0D47A1; // dark blue
+    display: block;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    
+    &::before,
+    &::after {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background: #0D47A1;
+      display: block;
+      position: absolute;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    &::before {
+      top: -9px;
+    }
+    
+    &::after {
+      bottom: -9px;
+    }
+  }
+  
+  &:hover .hamburger-icon,
+  &:hover .hamburger-icon::before,
+  &:hover .hamburger-icon::after {
+    background: #1E88E5; // primary blue
+  }
+  
+  &:active .hamburger-icon,
+  &:active .hamburger-icon::before,
+  &:active .hamburger-icon::after {
+    background: #42A5F5; // secondary blue
+  }
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  .hamburger-menu {
+    display: block;
+  }
+  
+  .user-info {
+    display: none !important;
+  }
+  
+  .notifications-container {
+    margin-right: 10px;
+    
+    .notification-bell {
+      font-size: 20px;
+    }
+  }
+  
+  .navbar-title {
+    font-size: 1rem !important;
+  }
+}
+
+// ========================================
+// BREADCRUMB - TEMA AZUL
+// ========================================
+
+.navbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: #8898aa;
+  margin-bottom: 10px;
+  
+  a {
+    color: #1E88E5; // primary blue
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    
+    &:hover {
+      color: #0D47A1; // dark blue
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+  }
+  
+  .separator {
+    color: #dee2e6;
+    font-weight: 300;
+  }
+  
+  .current {
+    color: #0D47A1;
+    font-weight: 600;
+  }
+}

@@ -42,16 +42,26 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #5e72e4 !default;
+// 🏍️ PALETA DE COLORES AZUL - DELIVERY PLATFORM
+// ==========================================
+// Paleta completa de AZULES para la temática de domicilios en moto
+$blue:    #1E88E5 !default;   // Azul principal - Color base del sistema
+$blue-light: #64B5F6 !default;   // Azul claro - Iconos, elementos secundarios
+$blue-dark: #0D47A1 !default;    // Navy oscuro - Sidebar, navbar, textos principales
+$blue-medium: #1976D2 !default;  // Azul intermedio - Subtítulos, hover
+$blue-very-dark: #01579B !default; // Azul muy oscuro - Footer sidebar, sombras
+$blue-very-light: #E3F2FD !default; // Azul muy claro - Fondos, cards
+$blue-ultra-light: #F5F9FD !default; // Azul ultra claro - Filas alternadas
+
 $indigo:  #5603ad !default;
 $purple:  #8965e0 !default;
 $pink:    #f3a4b5 !default;
-$red:     #f5365c !default;
-$orange:  #fb6340 !default;
-$yellow:  #ffd600 !default;
-$green:   #2dce89 !default;
-$teal:    #11cdef !default;
-$cyan:    #2bffc6 !default;
+$red:     #EF5350 !default;   // Danger - Errores, eliminación
+$orange:  #FF8C42 !default;   // Secundario - Elementos complementarios
+$yellow:  #FFA726 !default;   // Warning - Advertencias, pendientes
+$green:   #00ACC1 !default;   // Success - Verde azulado, pedidos completados
+$teal:    #039BE5 !default;   // Info azul - Información
+$cyan:    #42A5F5 !default;   // Azul cielo - Secundario, hover
 
 $colors: () !default;
 $colors: map-merge((
@@ -72,16 +82,19 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$default:       #172b4d !default;
-$primary:       #5e72e4 !default;
-$secondary:     #f7fafc !default;
-$success:       $green !default;
-$info:          $teal !default;
-$warning:       $orange !default;
-$danger:        $red !default;
-$light:         $gray-500 !default;
-$dark:          $gray-900 !default;
-$darker:        darken($gray-900, 15%) !default;
+// 🎨 COLORES TEMÁTICOS AZUL - DELIVERY PLATFORM
+// ==========================================
+// Todos los colores principales ahora usan la paleta AZUL
+$default:       $blue-dark !default;     // #0D47A1 - Textos principales y navbar
+$primary:       #1E88E5 !default;        // AZUL PRINCIPAL - Botones, enlaces, highlights
+$secondary:     #42A5F5 !default;        // AZUL CIELO - Hover, acciones secundarias
+$success:       #00ACC1 !default;        // Verde azulado - Pedidos completados
+$info:          #039BE5 !default;        // Azul información - Badges de estado
+$warning:       #FFA726 !default;        // Amarillo - Advertencias, pendientes
+$danger:        #EF5350 !default;        // Rojo - Errores, eliminación
+$light:         #E3F2FD !default;        // Azul muy claro - Fondos, cards
+$dark:          #0D47A1 !default;        // Azul oscuro (Navy) - Textos, navbar
+$darker:        #01579B !default;        // Azul muy oscuro - Sidebar, footer
 
 $facebook:      #3b5999 !default;
 $twitter:       #1da1f2 !default;
@@ -972,6 +985,82 @@ $footer-padding-x:              0;
 
 $footer-link-font-size: .85rem !default;
 $footer-bg: theme-color("secondary") !default;
+
+
+// =============================================================================
+// 🎨 VARIABLES PERSONALIZADAS AZULES - DELIVERY PLATFORM
+// =============================================================================
+// Variables adicionales específicas para el tema azul
+
+// Degradados AZULES
+$gradient-primary-blue: linear-gradient(87deg, #1E88E5 0, #42A5F5 100%) !default;
+$gradient-info-blue: linear-gradient(87deg, #039BE5 0, #64B5F6 100%) !default;
+$gradient-sidebar-blue: linear-gradient(180deg, #0D47A1 0%, #01579B 100%) !default;
+$gradient-card-header-blue: linear-gradient(90deg, #1E88E5 0%, #42A5F5 100%) !default;
+$gradient-dark-blue: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%) !default;
+
+// Sombras AZULES
+$shadow-primary-blue: 0 4px 12px rgba(30, 136, 229, 0.3) !default;
+$shadow-hover-blue: 0 8px 24px rgba(30, 136, 229, 0.25) !default;
+$shadow-card-blue: 0 12px 32px rgba(30, 136, 229, 0.2) !default;
+$navbar-shadow-blue: 0 2px 8px rgba(30, 136, 229, 0.1) !default;
+
+// Colores de texto AZULES
+$text-primary-blue: #0D47A1 !default;      // Títulos principales
+$text-secondary-blue: #1976D2 !default;    // Subtítulos
+$text-body-blue: #37474F !default;         // Texto normal (gris azulado)
+$text-muted-blue: #546E7A !default;        // Texto secundario
+
+// Sidebar AZUL
+$sidebar-width: 250px !default;
+$sidebar-bg-blue: $gradient-sidebar-blue !default;
+$sidebar-color: $white !default;
+$sidebar-item-padding-y: 0.75rem !default;
+$sidebar-item-padding-x: 1rem !default;
+$sidebar-item-border-radius: 0.5rem !default;
+$sidebar-item-hover-bg: rgba(#1E88E5, 0.15) !default;
+$sidebar-item-active-bg: #1E88E5 !default;
+$sidebar-item-active-border: #42A5F5 !default;
+$sidebar-icon-size: 22px !default;
+$sidebar-icon-color: #64B5F6 !default;
+$sidebar-logo-bg: #1E88E5 !default;
+
+// Navbar AZUL
+$navbar-height: 64px !default;
+$navbar-bg-blue: $white !default;
+$navbar-title-color-blue: #0D47A1 !default;
+$navbar-avatar-border: #1E88E5 !default;
+$navbar-avatar-border-width: 3px !default;
+
+// Badges AZULES (estados de pedidos)
+$badge-pending: #FFA726 !default;      // Amarillo - Pendiente
+$badge-preparing: #42A5F5 !default;    // Azul cielo - Preparando
+$badge-on-way: #1E88E5 !default;       // Azul principal - En camino
+$badge-delivered: #00ACC1 !default;    // Verde azulado - Entregado
+$badge-cancelled: #EF5350 !default;    // Rojo - Cancelado
+
+// Botones AZULES
+$btn-primary-bg: #1E88E5 !default;
+$btn-primary-hover: #1976D2 !default;
+$btn-secondary-bg: transparent !default;
+$btn-secondary-border: #1E88E5 !default;
+$btn-secondary-hover-bg: #1E88E5 !default;
+
+// Cards AZULES
+$card-shadow-blue: 0 2px 4px rgba(0, 0, 0, 0.08) !default;
+$card-hover-shadow-blue: 0 8px 24px rgba(30, 136, 229, 0.15) !default;
+$card-header-bg-blue: $gradient-card-header-blue !default;
+$card-border-top-blue: 3px solid #1E88E5 !default;
+
+// Tablas AZULES
+$table-head-bg-blue: #E3F2FD !default;
+$table-head-color-blue: #0D47A1 !default;
+$table-hover-bg-blue: #E1F5FE !default;
+$table-striped-bg-blue: #F5F9FD !default;
+
+// Transiciones suaves
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !default;
+$transition-fast: all 0.2s ease !default;
 $footer-color: $gray-600 !default;
 $footer-link-color: $gray-600 !default;
 $footer-link-hover-color: $gray-700 !default;

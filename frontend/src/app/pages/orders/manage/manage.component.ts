@@ -45,7 +45,8 @@ export class ManageComponent implements OnInit {
       menu_id: ['', Validators.required],
       address_id: ['', Validators.required],
       motorcycle_id: [null],
-      quantity: [1, [Validators.required, Validators.min(1)]]
+      quantity: [1, [Validators.required, Validators.min(1)]],
+      status: ['pending', Validators.required]
     });
 
     this.loadRelatedData();
@@ -57,7 +58,8 @@ export class ManageComponent implements OnInit {
           menu_id: data.menu_id,
           address_id: data.address?.id || '',
           motorcycle_id: data.motorcycle_id || null,
-          quantity: data.quantity
+          quantity: data.quantity,
+          status: data.status || 'pending'
         });
       });
     }
@@ -78,7 +80,8 @@ export class ManageComponent implements OnInit {
       menu_id: this.form.value.menu_id,
       address_id: this.form.value.address_id,
       motorcycle_id: this.form.value.motorcycle_id || null,
-      quantity: this.form.value.quantity
+      quantity: this.form.value.quantity,
+      status: this.form.value.status
     };
 
     if (this.id) {

@@ -73,6 +73,11 @@ export class ManageComponent implements OnInit {
   }
 
   save(): void {
+    // Marcar todos los campos como touched para mostrar errores
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].markAsTouched();
+    });
+
     if (this.form.invalid) return;
 
     const payload = {

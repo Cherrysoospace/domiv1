@@ -1,0 +1,60 @@
+<div class="manage-card-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card cozy-card">
+          <div class="card-header cozy-header text-center">
+            <h2>{{ isEdit ? 'Editar Issue' : 'Crear Issue' }}</h2>
+          </div>
+
+          <div class="card-body">
+            <form (ngSubmit)="save()">
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Motocicleta</label>
+                <select [(ngModel)]="issue.motorcycle_id" name="motorcycle_id" class="form-control cozy-input" required>
+                  <option *ngFor="let motorcycle of motorcycles" [value]="motorcycle.id">
+                    {{ motorcycle.name }} - {{ motorcycle.license_plate }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Tipo de Issue</label>
+                <select [(ngModel)]="issue.issue_type" name="issue_type" class="form-control cozy-input" required>
+                  <option value="accident">Accidente</option>
+                  <option value="breakdown">Avería</option>
+                  <option value="maintenance">Mantenimiento</option>
+                </select>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Descripción</label>
+                <textarea [(ngModel)]="issue.description" name="description" class="form-control cozy-input" required></textarea>
+                <p *ngIf="!issue.description" class="text-danger small mt-1">La descripción es obligatoria.</p>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Estado</label>
+                <select [(ngModel)]="issue.status" name="status" class="form-control cozy-input" required>
+                  <option value="pendiente">Pendiente</option>
+                  <option value="resuelto">Resuelto</option>
+                  <option value="en_progreso">En Progreso</option>
+                </select>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Fecha Reportada</label>
+                <input type="datetime-local" [(ngModel)]="issue.date_reported" name="date_reported" class="form-control cozy-input">
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-secondary mr-2" (click)="goBack()">Volver</button>
+                <button type="submit" class="btn save-btn" [disabled]="!issue.description">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

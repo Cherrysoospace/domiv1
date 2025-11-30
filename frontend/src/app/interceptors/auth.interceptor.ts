@@ -33,12 +33,20 @@ export class AuthInterceptor implements HttpInterceptor {
       return from(this.authService.getIdToken()).pipe(
         switchMap(token => {
           if (token) {
-            // Clonamos la petición y añadimos el header Authorization
+            // Preparar headers
+            const headers: any = {
+              'Authorization': `Bearer ${token}`
+            };
+            
+            // Solo agregar Content-Type si NO es FormData
+            // FormData debe establecer su propio Content-Type con boundary
+            if (!(req.body instanceof FormData)) {
+              headers['Content-Type'] = 'application/json';
+            }
+            
+            // Clonamos la petición y añadimos los headers
             const clonedRequest = req.clone({
-              setHeaders: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-              }
+              setHeaders: headers
             });
             
             console.log('═══════════════════════════════════════════════');
@@ -47,10 +55,8 @@ export class AuthInterceptor implements HttpInterceptor {
             console.log('📍 URL:', req.url);
             console.log('📝 Método:', req.method);
             console.log('🔑 Token (primeros 50 chars):', token.substring(0, 50) + '...');
-            console.log('📋 Headers completos:', {
-              Authorization: `Bearer ${token.substring(0, 20)}...`,
-              'Content-Type': 'application/json'
-            });
+            console.log('📦 Body es FormData:', req.body instanceof FormData);
+            console.log('📋 Headers:', headers);
             console.log('═══════════════════════════════════════════════');
             
             return next.handle(clonedRequest).pipe(

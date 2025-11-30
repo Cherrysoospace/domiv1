@@ -33,8 +33,16 @@ export class PhotosService {
   }
 
   getById(id: number): Observable<Photo> {
-    return this.http.get<Photo>(`${this.baseUrl}/${id}`).pipe(
-      map(raw => this.toPhoto(raw)),
+    // El endpoint /photos/<id> retorna la imagen binaria, no el JSON
+    // Por eso obtenemos los datos desde el listado completo
+    return this.getAll().pipe(
+      map((photos: Photo[]) => {
+        const photo = photos.find(p => p.id === id);
+        if (!photo) {
+          throw new Error(`Foto con ID ${id} no encontrada`);
+        }
+        return photo;
+      }),
       catchError(this.handleError)
     );
   }
@@ -47,15 +55,10 @@ export class PhotosService {
     );
   }
 
-  // Upload photo with file + form data to /photos/upload
-  uploadWithFile(file: File, data: { [key: string]: any } = {}): Observable<Photo> {
+  // Upload photo with file only to /photos/upload
+  uploadWithFile(file: File): Observable<Photo> {
     const form = new FormData();
     form.append('file', file, file.name);
-    Object.keys(data).forEach(k => {
-      if (data[k] !== undefined && data[k] !== null) {
-        form.append(k, String(data[k]));
-      }
-    });
 
     return this.http.post<Photo>(`${this.baseUrl}/upload`, form).pipe(
       map((raw: any) => this.toPhoto(raw)),
@@ -63,10 +66,35 @@ export class PhotosService {
     );
   }
 
+  // Create photo with file + metadata
+  createWithFile(file: File, data: { [key: string]: any }): Observable<Photo> {
+    const form = new FormData();
+    form.append('file', file, file.name);
+    
+    // Agregar todos los campos de data al FormData
+    Object.keys(data).forEach(k => {
+      const value = data[k];
+      if (value !== undefined && value !== null && value !== '') {
+        form.append(k, String(value));
+      }
+    });
+
+    return this.http.post<Photo>(`${this.baseUrl}/upload`, form).pipe(
+      map((raw: any) => this.toPhoto(raw)),
+      catchError((error) => {
+        console.error('❌ Error al crear foto:', error);
+        return this.handleError(error);
+      })
+    );
+  }
+
   update(id: number, payload: Partial<Photo>): Observable<Photo> {
     return this.http.put<Photo>(`${this.baseUrl}/${id}`, payload).pipe(
       map((raw: any) => this.toPhoto(raw)),
-      catchError(this.handleError)
+      catchError((error) => {
+        console.error('❌ Error al actualizar foto:', error);
+        return this.handleError(error);
+      })
     );
   }
 

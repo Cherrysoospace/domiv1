@@ -8,3 +8,6 @@ venv/
 
 # Adjusted to ignore the database file without specifying the folder
 **/restaurant_delivery.db
+
+# Ignore uploads folder
+**/uploads/

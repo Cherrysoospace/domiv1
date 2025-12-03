@@ -1,0 +1,49 @@
+<div class="content">
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Lista de Issues</h3>
+            <a class="btn btn-sm btn-primary" routerLink="/issues/create">Nuevo Issue</a>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Motorcycle ID</th>
+                    <th scope="col">Tipo de Issue</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha Reportada</th>
+                    <th scope="col" class="text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let issue of issues">
+                    <td>{{ issue.id }}</td>
+                    <td>{{ issue.motorcycle_id }}</td>
+                    <td>{{ issue.issue_type }}</td>
+                    <td>{{ issue.description }}</td>
+                    <td>{{ issue.status }}</td>
+                    <td>{{ issue.date_reported }}</td>
+                    <td class="text-right">
+                      <a class="btn btn-sm btn-warning mr-2" [routerLink]="['/issues/edit', issue.id]">Editar</a>
+                      <button class="btn btn-sm btn-danger" (click)="delete(issue.id)">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div *ngIf="issues.length === 0" class="text-center text-muted py-3">
+                No hay issues aún.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

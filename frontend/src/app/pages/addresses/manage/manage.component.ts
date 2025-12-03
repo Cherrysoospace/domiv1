@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressesService } from 'src/app/services/address/addresses.service';
+import { OrdersService } from 'src/app/services/order/orders.service';
 import { Address } from 'src/app/models/address/address.model';
+import { Order } from 'src/app/models/order/order.model';
 
 @Component({
   selector: 'app-manage',
@@ -12,11 +14,13 @@ import { Address } from 'src/app/models/address/address.model';
 export class ManageComponent implements OnInit {
   form!: FormGroup;
   id?: number;
+  orders: Order[] = [];
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private service: AddressesService,
+    private ordersService: OrdersService,
     private router: Router
   ) { }
 
@@ -30,6 +34,11 @@ export class ManageComponent implements OnInit {
       postal_code: ['', Validators.required],
       order_id: ['', Validators.required],
       additional_info: ['']
+    });
+
+    // Cargar órdenes disponibles
+    this.ordersService.getAll().subscribe(orders => {
+      this.orders = orders;
     });
 
     if (this.id) {

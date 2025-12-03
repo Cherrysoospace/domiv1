@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { OrdersService } from 'src/app/services/order/orders.service';
 import { Order } from 'src/app/models/order/order.model';
 import { interval, Subject } from 'rxjs';
@@ -45,7 +45,11 @@ export class MapComponent implements OnInit, OnDestroy {
     minZoom: 10,
   };
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(
+    private ordersService: OrdersService,
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone
+  ) {}
 
   ngOnInit(): void {
     this.ensureGoogleMapsAvailable();
@@ -60,11 +64,16 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-    if (this.googleCheckIntervalId) {
-      window.clearInterval(this.googleCheckIntervalId);
-      this.googleCheckIntervalId = undefined;
+    try {
+      this.destroy$.next();
+      this.destroy$.complete();
+      
+      if (this.googleCheckIntervalId) {
+        window.clearInterval(this.googleCheckIntervalId);
+        this.googleCheckIntervalId = undefined;
+      }
+    } catch (error) {
+      console.warn('Error al destruir componente de mapa:', error);
     }
   }
 
@@ -139,27 +148,34 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private ensureGoogleMapsAvailable(): void {
-    if (this.googleMapsReady()) {
-      this.onGoogleMapsReady();
-      return;
-    }
-
-    this.googleCheckIntervalId = window.setInterval(() => {
+    try {
       if (this.googleMapsReady()) {
         this.onGoogleMapsReady();
         return;
       }
 
-      this.googleCheckAttempts++;
-
-      if (this.googleCheckAttempts >= this.googleCheckMaxAttempts) {
-        if (this.googleCheckIntervalId) {
-          window.clearInterval(this.googleCheckIntervalId);
-          this.googleCheckIntervalId = undefined;
+      this.googleCheckIntervalId = window.setInterval(() => {
+        if (this.googleMapsReady()) {
+          this.onGoogleMapsReady();
+          return;
         }
-        this.mapLoadError = 'Google Maps no está disponible. Verifica que la API tenga facturación habilitada y que la clave esté autorizada.';
-      }
-    }, 500);
+
+        this.googleCheckAttempts++;
+
+        if (this.googleCheckAttempts >= this.googleCheckMaxAttempts) {
+          if (this.googleCheckIntervalId) {
+            window.clearInterval(this.googleCheckIntervalId);
+            this.googleCheckIntervalId = undefined;
+          }
+          this.mapLoadError = 'Google Maps no está disponible. Verifica que la API tenga facturación habilitada y que la clave esté autorizada.';
+          this.cdr.detectChanges();
+        }
+      }, 500);
+    } catch (error) {
+      console.error('Error al inicializar Google Maps:', error);
+      this.mapLoadError = 'Error al cargar Google Maps. Por favor, recarga la página.';
+      this.cdr.detectChanges();
+    }
   }
 
   private googleMapsReady(): boolean {
@@ -167,13 +183,22 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private onGoogleMapsReady(): void {
-    this.mapsLoaded = true;
-    this.mapLoadError = undefined;
-    this.markerAnimation = google.maps.Animation.DROP;
     if (this.googleCheckIntervalId) {
       window.clearInterval(this.googleCheckIntervalId);
       this.googleCheckIntervalId = undefined;
     }
+    
+    // Usar NgZone para asegurar que Angular detecte los cambios
+    this.ngZone.run(() => {
+      this.mapLoadError = undefined;
+      this.markerAnimation = google.maps.Animation.DROP;
+      
+      // Delay pequeño para asegurar que el DOM esté listo
+      setTimeout(() => {
+        this.mapsLoaded = true;
+        this.cdr.detectChanges();
+      }, 100);
+    });
   }
 
   /**

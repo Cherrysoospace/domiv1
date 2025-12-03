@@ -30,12 +30,16 @@
 								<p *ngIf="form.controls['postal_code'].invalid && form.controls['postal_code'].touched" class="text-danger small mt-1">El campo postal_code es obligatorio</p>
 							</div>
 
-							<div class="form-group cozy-group">
-								<input type="text" formControlName="order_id" class="form-control cozy-input" placeholder="Order ID" />
-								<p *ngIf="form.controls['order_id'].invalid && form.controls['order_id'].touched" class="text-danger small mt-1">El campo order_id es obligatorio</p>
-							</div>
-
-							<div class="form-group cozy-group">
+					<div class="form-group cozy-group">
+						<label class="cozy-label">Order ID *</label>
+						<select formControlName="order_id" class="form-control cozy-input">
+							<option value="">Seleccione una orden</option>
+							<option *ngFor="let order of orders" [value]="order.id">
+								Orden #{{ order.id }} - {{ order.customer?.name || 'Cliente' }} - {{ order.status }}
+							</option>
+						</select>
+						<p *ngIf="form.controls['order_id'].invalid && form.controls['order_id'].touched" class="text-danger small mt-1">Este campo es obligatorio</p>
+					</div>							<div class="form-group cozy-group">
 								<input type="text" formControlName="additional_info" class="form-control cozy-input" placeholder="Información adicional" />
 							</div>
 

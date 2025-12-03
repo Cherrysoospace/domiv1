@@ -10,40 +10,37 @@
 
 					<div class="card-body">
 						<form [formGroup]="form" (ngSubmit)="save()">
-							<div class="form-group cozy-group">
-								<label>Cliente *</label>
-								<select formControlName="customer_id" class="form-control cozy-input">
-									<option value="">Seleccione un cliente</option>
-									<option *ngFor="let customer of customers" [value]="customer.id">
-										{{ customer.name }}
-									</option>
-								</select>
-								<p *ngIf="form.controls['customer_id'].invalid && form.controls['customer_id'].touched" class="text-danger small mt-1">El cliente es obligatorio</p>
-							</div>
-
-							<div class="form-group cozy-group">
-								<label>Producto/Menú *</label>
-								<select formControlName="menu_id" class="form-control cozy-input">
-									<option value="">Seleccione un producto</option>
-									<option *ngFor="let menu of menus" [value]="menu.id">
-										{{ menu.product?.name || 'Producto #' + menu.id }} - {{ menu.price | currency }}
-									</option>
-								</select>
-								<p *ngIf="form.controls['menu_id'].invalid && form.controls['menu_id'].touched" class="text-danger small mt-1">El producto es obligatorio</p>
-							</div>
-
-							<div class="form-group cozy-group">
-								<label>Dirección de entrega *</label>
-								<select formControlName="address_id" class="form-control cozy-input">
-									<option value="">Seleccione una dirección</option>
-									<option *ngFor="let address of addresses" [value]="address.id">
-										{{ address.street }}, {{ address.city }}
-									</option>
-								</select>
-								<p *ngIf="form.controls['address_id'].invalid && form.controls['address_id'].touched" class="text-danger small mt-1">La dirección es obligatoria</p>
-							</div>
-
-							<div class="form-group cozy-group">
+						<div class="form-group cozy-group">
+							<label>Cliente *</label>
+							<select formControlName="customer_id" class="form-control cozy-input" 
+								[class.is-invalid]="form.controls['customer_id'].invalid && form.controls['customer_id'].touched">
+								<option value="">Seleccione un cliente</option>
+								<option *ngFor="let customer of customers" [value]="customer.id">
+									{{ customer.name }}
+								</option>
+							</select>
+							<p *ngIf="form.controls['customer_id'].invalid && form.controls['customer_id'].touched" class="text-danger small mt-1">Este campo es obligatorio</p>
+						</div>						<div class="form-group cozy-group">
+							<label>Producto/Menú *</label>
+							<select formControlName="menu_id" class="form-control cozy-input"
+								[class.is-invalid]="form.controls['menu_id'].invalid && form.controls['menu_id'].touched">
+								<option value="">Seleccione un producto</option>
+								<option *ngFor="let menu of menus" [value]="menu.id">
+									{{ menu.product?.name || 'Producto #' + menu.id }} - {{ menu.price | currency }}
+								</option>
+							</select>
+							<p *ngIf="form.controls['menu_id'].invalid && form.controls['menu_id'].touched" class="text-danger small mt-1">Este campo es obligatorio</p>
+						</div>						<div class="form-group cozy-group">
+							<label>Dirección de entrega *</label>
+							<select formControlName="address_id" class="form-control cozy-input"
+								[class.is-invalid]="form.controls['address_id'].invalid && form.controls['address_id'].touched">
+								<option value="">Seleccione una dirección</option>
+								<option *ngFor="let address of addresses" [value]="address.id">
+									{{ address.street }}, {{ address.city }}
+								</option>
+							</select>
+							<p *ngIf="form.controls['address_id'].invalid && form.controls['address_id'].touched" class="text-danger small mt-1">Este campo es obligatorio</p>
+						</div>							<div class="form-group cozy-group">
 								<label>Motocicleta (Opcional)</label>
 								<select formControlName="motorcycle_id" class="form-control cozy-input">
 									<option [value]="null">Sin asignar</option>
@@ -53,13 +50,22 @@
 								</select>
 							</div>
 
-							<div class="form-group cozy-group">
-								<label>Cantidad *</label>
-								<input type="number" formControlName="quantity" class="form-control cozy-input" placeholder="Cantidad" min="1" />
-								<p *ngIf="form.controls['quantity'].invalid && form.controls['quantity'].touched" class="text-danger small mt-1">La cantidad debe ser al menos 1</p>
-							</div>
-
-							<div class="alert alert-info small">
+					<div class="form-group cozy-group">
+						<label>Cantidad *</label>
+						<input type="number" formControlName="quantity" class="form-control cozy-input" placeholder="Cantidad" min="1"
+							[class.is-invalid]="form.controls['quantity'].invalid && form.controls['quantity'].touched" />
+						<p *ngIf="form.controls['quantity'].hasError('required') && form.controls['quantity'].touched" class="text-danger small mt-1">Este campo es obligatorio</p>
+						<p *ngIf="form.controls['quantity'].hasError('min') && form.controls['quantity'].touched" class="text-danger small mt-1">La cantidad debe ser al menos 1</p>
+					</div>						<div class="form-group cozy-group">
+							<label>Estado *</label>
+							<select formControlName="status" class="form-control cozy-input">
+								<option value="pending">Pendiente</option>
+								<option value="in_progress">En Progreso</option>
+								<option value="delivered">Entregada</option>
+								<option value="cancelled">Cancelada</option>
+							</select>
+							<p *ngIf="form.controls['status'].invalid && form.controls['status'].touched" class="text-danger small mt-1">El estado es obligatorio</p>
+						</div>							<div class="alert alert-info small">
 								<strong>Nota:</strong> El precio total se calculará automáticamente en el backend según el precio del menú y la cantidad.
 							</div>
 

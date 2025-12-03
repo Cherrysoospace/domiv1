@@ -1,0 +1,55 @@
+<div class="manage-card-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card cozy-card">
+          <div class="card-header cozy-header text-center">
+            <h2 *ngIf="!isEdit" class="cozy-title">Crear Foto</h2>
+            <h2 *ngIf="isEdit" class="cozy-title">Editar Foto</h2>
+          </div>
+
+          <div class="card-body">
+            <form (ngSubmit)="save()">
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Issue ID</label>
+                <select [(ngModel)]="photo.issue_id" name="issue_id" class="form-control cozy-input" required>
+                  <option *ngFor="let issue of issues" [value]="issue.id">
+                    {{ issue.id }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group cozy-group" *ngIf="isEdit && photo.id">
+                <label class="cozy-label">Vista previa</label>
+                <img [src]="getImageUrl()" class="img-thumbnail" width="120" height="120" alt="Vista previa">
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Archivo</label>
+                <input type="file" (change)="onFileSelected($event)" class="form-control-file">
+                <small class="form-text text-muted" *ngIf="isEdit">
+                  Nota: Seleccionar un nuevo archivo reemplazará la imagen actual
+                </small>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Caption</label>
+                <input type="text" [(ngModel)]="photo.caption" name="caption" class="form-control cozy-input" required>
+              </div>
+
+              <div class="form-group cozy-group">
+                <label class="cozy-label">Fecha tomada</label>
+                <input type="datetime-local" [(ngModel)]="photo.taken_at" name="taken_at" class="form-control cozy-input">
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-secondary mr-2" routerLink="/photos">Regresar</button>
+                <button type="submit" class="btn save-btn">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div> <!-- .cozy-card -->
+      </div>
+    </div>
+  </div>
+</div>

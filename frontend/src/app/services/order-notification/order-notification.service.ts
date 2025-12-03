@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject, interval } from 'rxjs';
 import { NOTIFICATION_SOUND } from '../../../assets/sounds/notification-sound';
+import { OrdersService } from '../order/orders.service';
+import { Order } from 'src/app/models/order/order.model';
 
 export interface NewOrderNotification {
   orderId: number;
@@ -16,17 +18,21 @@ export interface NewOrderNotification {
 export class OrderNotificationService {
   private audio: HTMLAudioElement;
   private newOrderSubject = new Subject<NewOrderNotification>();
+  private notifiedOrderIds = new Set<number>(); // IDs de órdenes ya notificadas
   
   // Observable para que otros componentes se suscriban
   public newOrder$ = this.newOrderSubject.asObservable();
 
-  constructor() {
+  constructor(private ordersService: OrdersService) {
     // Inicializar audio
     this.audio = new Audio(NOTIFICATION_SOUND);
     this.audio.volume = 0.8; // 80% de volumen
     
-    // Simular llegada de nuevos pedidos cada 30 segundos (demo)
-    this.startSimulation();
+    // Cargar órdenes existentes para no notificarlas
+    this.initializeNotifiedOrders();
+    
+    // Iniciar polling de nuevas órdenes cada 10 segundos
+    this.startPolling();
   }
 
   /**
@@ -58,26 +64,77 @@ export class OrderNotificationService {
   }
 
   /**
-   * Simulación de nuevos pedidos (para demo)
-   * En producción, esto vendría de WebSocket o polling al backend
+   * Inicializar el conjunto de órdenes ya existentes
+   * para no notificar órdenes anteriores
    */
-  private startSimulation(): void {
-    const customers = ['Juan Pérez', 'María García', 'Carlos López', 'Ana Martínez', 'Pedro Sánchez'];
-    const items = ['Pizza Hawaiana', 'Hamburguesa Doble', 'Sushi Variado', 'Tacos Mexicanos', 'Pasta Carbonara'];
-    const streets = ['Calle 23 #45-67', 'Carrera 15 #32-10', 'Avenida 5 #78-23', 'Diagonal 8 #12-45', 'Transversal 3 #56-89'];
-
-    // Simular nuevo pedido cada 30 segundos
-    interval(30000).subscribe(() => {
-      const randomOrder: NewOrderNotification = {
-        orderId: Math.floor(Math.random() * 1000) + 1000,
-        customerName: customers[Math.floor(Math.random() * customers.length)],
-        items: items[Math.floor(Math.random() * items.length)],
-        address: streets[Math.floor(Math.random() * streets.length)],
-        timestamp: new Date()
-      };
-
-      this.notifyNewOrder(randomOrder);
+  private initializeNotifiedOrders(): void {
+    this.ordersService.getAll().subscribe(orders => {
+      orders.forEach(order => {
+        if (order.id) {
+          this.notifiedOrderIds.add(order.id);
+        }
+      });
+      console.log(`✅ Inicializadas ${this.notifiedOrderIds.size} órdenes existentes`);
     });
+  }
+
+  /**
+   * Polling de nuevas órdenes del backend
+   * Verifica cada 5 segundos si hay órdenes nuevas
+   */
+  private startPolling(): void {
+    // Verificar nuevas órdenes cada 5 segundos
+    interval(5000).subscribe(() => {
+      this.checkForNewOrders();
+    });
+  }
+
+  /**
+   * Verificar si hay nuevas órdenes
+   */
+  private checkForNewOrders(): void {
+    this.ordersService.getAll().subscribe(orders => {
+      orders.forEach(order => {
+        // Si la orden no ha sido notificada antes
+        if (order.id && !this.notifiedOrderIds.has(order.id)) {
+          this.notifiedOrderIds.add(order.id);
+          
+          // Crear notificación a partir de la orden real
+          const notification: NewOrderNotification = {
+            orderId: order.id,
+            customerName: order.customer?.name || 'Cliente desconocido',
+            items: this.getOrderItems(order),
+            address: this.getOrderAddress(order),
+            timestamp: order.created_at ? new Date(order.created_at) : new Date()
+          };
+
+          this.notifyNewOrder(notification);
+        }
+      });
+    });
+  }
+
+  /**
+   * Obtener descripción de items del pedido
+   */
+  private getOrderItems(order: Order): string {
+    if (order.menu?.product?.name) {
+      return `${order.menu.product.name} (x${order.quantity || 1})`;
+    }
+    return `Pedido #${order.id}`;
+  }
+
+  /**
+   * Obtener dirección del pedido
+   */
+  private getOrderAddress(order: Order): string {
+    if (order.address) {
+      const parts = [];
+      if (order.address.street) parts.push(order.address.street);
+      if (order.address.city) parts.push(order.address.city);
+      return parts.join(', ') || 'Dirección no disponible';
+    }
+    return 'Dirección no disponible';
   }
 
   /**

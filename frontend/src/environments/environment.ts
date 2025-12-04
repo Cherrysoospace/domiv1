@@ -7,7 +7,7 @@ export const environment = {
   apiUrl: 'http://localhost:5000',
   geminiApiKey: 'GEMINI_KEY',
   geminiUrl: 'https://generative.googleapis.com/v1beta2/models/gemini-1.0:generateText',
-  mockServerUrl: 'https://e60a8f75-7355-478d-8f96-c7229f8574b6.mock.pstmn.io',
+  mockServerUrl: 'https://edad2e4e-e1fa-4ed7-b47c-ca6489d3ae74.mock.pstmn.io',
   // Clave de API de Google Maps (reemplaza con tu propia clave)
   googleMapsApiKey: 'AIzaSyAdEAb3urB1jwxUlyDzWcEh10EOPhifdhw',
   // Configuración de Firebase para autenticación OAuth2
